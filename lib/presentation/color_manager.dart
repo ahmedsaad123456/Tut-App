@@ -7,6 +7,14 @@ class ColorManager {
   static Color lightGrey = HexColor.fromHex("#9E9E9E");
   static Color primaryOpacity70 =
       HexColor.fromHex("#B3ED9728"); // length > 6 that mean opacity , B3 = 70
+
+  // new colors 
+  static Color darkPrimary = HexColor.fromHex("#d17d11");
+  static Color grey1 = HexColor.fromHex("#707070");
+  static Color grey2 = HexColor.fromHex("#797979");
+  static Color white = HexColor.fromHex("#FFFFFF");
+  static Color error = HexColor.fromHex("#e61f34"); // red color
+
 }
 
 // An extension allows you to add new functionality to an existing class without modifying the class itself.
