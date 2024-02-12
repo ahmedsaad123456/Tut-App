@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:mvvm/presentation/fonts_manager.dart';
+import 'package:mvvm/presentation/resources/fonts_manager.dart';
 
 TextStyle _getTextStyle(double fontSize, String fontFamily,FontWeight fontWeight, Color color) {
   return TextStyle(

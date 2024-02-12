@@ -1,5 +1,8 @@
 import 'package:flutter/material.dart';
+import 'package:mvvm/presentation/resources/routes_manager.dart';
+import 'package:mvvm/presentation/resources/theme_manager.dart';
 
+// ignore: must_be_immutable
 class MyApp extends StatefulWidget {
   MyApp._internal(); // private named constructor . it used to create static variables or methods
 
@@ -16,7 +19,12 @@ class MyApp extends StatefulWidget {
 class _MyAppState extends State<MyApp> {
   @override
   Widget build(BuildContext context) {
-    return const Placeholder();
+    return MaterialApp(
+      onGenerateRoute: RouteGenerator.getRoute,
+      initialRoute: Routes.splashRoute,
+      theme: getApplicationTheme(),
+      debugShowCheckedModeBanner: false,
+    );
   }
 }
 
