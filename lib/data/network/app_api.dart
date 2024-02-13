@@ -6,6 +6,8 @@ part 'app_api.g.dart';
 
 @RestApi(baseUrl: Constant.baseUrl)
 abstract class AppServiceClient {
+
+  // factory constructor to create one instance from this class when called multiple times
   factory AppServiceClient(Dio dio, {String baseUrl}) = _AppServiceClient;
 
   @POST("/customers/login")

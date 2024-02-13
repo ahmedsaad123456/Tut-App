@@ -10,6 +10,7 @@ class MyApp extends StatefulWidget {
   static final MyApp instance =
       MyApp._internal(); // single instance -- singleton
 
+  // to return the same instance when called multiple times
   factory MyApp() => instance; // factory for the class instance
 
   @override

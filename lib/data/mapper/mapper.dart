@@ -2,7 +2,7 @@
 
 import 'package:mvvm/app/extensions.dart';
 import 'package:mvvm/data/responses/responses.dart';
-import 'package:mvvm/domain/model.dart';
+import 'package:mvvm/domain/model/model.dart';
 
 // convert data layer to domain layer
 
