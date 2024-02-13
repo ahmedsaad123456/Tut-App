@@ -37,11 +37,22 @@ dependencies:
   cupertino_icons: ^1.0.6
   flutter_svg: ^2.0.9
 
+  retrofit: ^4.1.0
+  analyzer: ^6.2.0
+  dio: ^5.4.0
+  json_serializable: ^6.7.1
+  json_annotation: ^4.8.1
+  dartz: ^0.10.1
+  internet_connection_checker: ^1.0.0+1
 
 
+# 
 dev_dependencies:
   flutter_test:
     sdk: flutter
+  retrofit_generator: ^8.1.0
+  build_runner: ^2.4.8
+
 
   # The "flutter_lints" package below contains a set of recommended lints to
   # encourage good coding practices. The lint set provided by the package is
