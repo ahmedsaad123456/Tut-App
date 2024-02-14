@@ -23,6 +23,20 @@ class AppStrings {
   // skip button
   static const String skip = "Skip";
 
+  // login view
+  static const String userName = "Username";
+  static const String userNameError = "Username is wrong";
+  static const String password = "Password";
+  static const String passwordError = "Password is wrong";
+  static const String login = "Login";
+  static const String forgetPassword = "Forget Password";
+  static const String registerText = "Not a member ? Sign up";
+
+
+
+
+
+
 
 
 }

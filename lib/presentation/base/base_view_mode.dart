@@ -8,6 +8,7 @@ abstract class BaseViewModelInputs {
   void dispose(); // will be called while view model dies.
 }
 
+// mixin to can use this class in many classes and with keyword "with"
 mixin BaseViewModelOutputs {
 
 

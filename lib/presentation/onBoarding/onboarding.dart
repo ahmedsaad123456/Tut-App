@@ -5,6 +5,7 @@ import 'package:mvvm/domain/model/model.dart';
 import 'package:mvvm/presentation/onBoarding/onboarding_viewmodel.dart';
 import 'package:mvvm/presentation/resources/assets_manager.dart';
 import 'package:mvvm/presentation/resources/color_manager.dart';
+import 'package:mvvm/presentation/resources/routes_manager.dart';
 import 'package:mvvm/presentation/resources/strings_manager.dart';
 import 'package:mvvm/presentation/resources/values_manager.dart';
 
@@ -73,7 +74,10 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               Align(
                 alignment: Alignment.centerRight,
                 child: TextButton(
-                    onPressed: () {},
+                    onPressed: () {
+                      Navigator.pushReplacementNamed(
+                          context, Routes.loginRoute);
+                    },
                     child: Text(
                       AppStrings.skip,
                       style: Theme.of(context).textTheme.titleSmall,
@@ -102,7 +106,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               onTap: () {
                 // go to previous slide
                 _pageController.animateToPage(_viewModel.goPrevious(),
-                    duration: const Duration(milliseconds: DurationConstant.d300),
+                    duration:
+                        const Duration(milliseconds: DurationConstant.d300),
                     curve: Curves.bounceInOut);
               },
               child: SizedBox(
@@ -131,7 +136,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
               onTap: () {
                 // go to next slide
                 _pageController.animateToPage(_viewModel.goNext(),
-                    duration: const Duration(milliseconds: DurationConstant.d300),
+                    duration:
+                        const Duration(milliseconds: DurationConstant.d300),
                     curve: Curves.bounceInOut);
               },
               child: SizedBox(

@@ -1,7 +1,6 @@
 const String IMAGE_PATH = "assets/images";
 
 class ImageAssets {
-
   // splash logo
   static const String splashLogo = "$IMAGE_PATH/splash_logo.png";
 
@@ -17,5 +16,4 @@ class ImageAssets {
   static const String rightArrowIc = "$IMAGE_PATH/right_arrow_ic.svg";
   static const String leftArrowIc = "$IMAGE_PATH/left_arrow_ic.svg";
 
-
-}
+  }
