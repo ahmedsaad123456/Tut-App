@@ -7,6 +7,8 @@ class BaseResponse {
   int? status; // it can be not matching
   @JsonKey(name: "message")
   String? message;
+
+  
 }
 
 @JsonSerializable()
@@ -18,14 +20,13 @@ class CustomerResponse {
   @JsonKey(name: "numOfNotifications")
   int? numOfNotifications;
 
-  CustomerResponse(this.id, this.name, this.numOfNotifications);
-    // from json
+  CustomerResponse({this.id, this.name, this.numOfNotifications});
+  // from json
   factory CustomerResponse.fromJson(Map<String, dynamic> json) =>
       _$CustomerResponseFromJson(json);
 
   // to json
   Map<String, dynamic> toJson() => _$CustomerResponseToJson(this);
-
 }
 
 @JsonSerializable()
@@ -37,14 +38,13 @@ class ContactsResponse {
   @JsonKey(name: "link")
   String? link;
 
-  ContactsResponse(this.email, this.phone, this.link);
-    // from json
+  ContactsResponse({this.email, this.phone, this.link});
+  // from json
   factory ContactsResponse.fromJson(Map<String, dynamic> json) =>
       _$ContactsResponseFromJson(json);
 
   // to json
   Map<String, dynamic> toJson() => _$ContactsResponseToJson(this);
-
 }
 
 @JsonSerializable()
@@ -61,5 +61,4 @@ class AuthenticationResponse extends BaseResponse {
 
   // to json
   Map<String, dynamic> toJson() => _$AuthenticationResponseToJson(this);
-
 }

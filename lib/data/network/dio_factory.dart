@@ -1,8 +1,11 @@
+import 'dart:convert';
+
 import 'package:dio/dio.dart';
 import 'package:flutter/foundation.dart';
 import 'package:mvvm/app/app_prefs.dart';
 import 'package:mvvm/app/constant.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
+import 'package:retrofit/http.dart';
 
 const String APPLICATION_JSON = "application/json";
 const String CONTENT_TYPE = "content-type";
@@ -41,6 +44,18 @@ class DioFactory {
         responseHeader: true,
       ));
     }
+
+    // for if the response is string convert it to the json map
+
+    dio.interceptors.add(
+      InterceptorsWrapper(
+        onResponse: (response, handler) {
+          response.data = jsonDecode(response.data as String);
+          return handler.next(response);
+        },
+      ),
+    );
+
     return dio;
   }
 }

@@ -1,6 +1,5 @@
 import 'dart:async';
 
-import 'package:flutter/material.dart';
 import 'package:mvvm/domain/usecase/login_usecase.dart';
 import 'package:mvvm/presentation/base/base_view_mode.dart';
 import 'package:mvvm/presentation/common/freezed_data_classes.dart';
@@ -8,17 +7,17 @@ import 'package:mvvm/presentation/common/freezed_data_classes.dart';
 class LoginViewModel extends BaseViewModel
     with LoginViewModelInputs, LoginViewModelOutputs {
   // broadcast stream for multiple listeners
-  StreamController _userNameStreamController =
+  final StreamController _userNameStreamController =
       StreamController<String>.broadcast();
 
-  StreamController _passwordStreamController =
+  final StreamController _passwordStreamController =
       StreamController<String>.broadcast();
 
-  StreamController _isAllInputsValidStreamController =
+  final StreamController _isAllInputsValidStreamController =
       StreamController<void>.broadcast();
   var loginObject = LoginObject("", "");
 
-  LoginUseCase? _loginUseCase; // todo remove ?
+  final LoginUseCase _loginUseCase;
   LoginViewModel(this._loginUseCase);
 
   // inputs
@@ -45,17 +44,17 @@ class LoginViewModel extends BaseViewModel
 
   @override
   login() async {
-    // (await _loginUseCase!.execute(
-    //         LoginUseCaseInput(loginObject.userName, loginObject.password)))
-    //     .fold(
-    //         (failure) => {
-    //               // left -> failure
-    //               print(failure.message)
-    //             },
-    //         (data) => {
-    //               // right -> success (data)
-    //               print(data.customer?.name)
-    //             });
+    (await _loginUseCase.execute(
+            LoginUseCaseInput(loginObject.userName, loginObject.password)))
+        .fold(
+            (failure) => {
+                  // left -> failure
+                  print(failure.message)
+                },
+            (data) => {
+                  // right -> success (data)
+                  print(data.customer?.name)
+                });
   }
 
   @override
