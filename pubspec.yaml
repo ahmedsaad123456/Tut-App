@@ -50,6 +50,8 @@ dependencies:
   freezed: ^2.4.7
   freezed_annotation: ^2.4.1
   get_it: ^7.6.7
+  lottie: ^3.0.0
+
 
 
 
@@ -102,6 +104,11 @@ flutter:
     - assets/images/solid_circle_ic.svg
     - assets/images/right_arrow_ic.svg
     - assets/images/left_arrow_ic.svg
+    - assets/json/empty.json
+    - assets/json/error.json
+    - assets/json/loading.json
+
+
 
 
 

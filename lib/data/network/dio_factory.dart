@@ -5,7 +5,6 @@ import 'package:flutter/foundation.dart';
 import 'package:mvvm/app/app_prefs.dart';
 import 'package:mvvm/app/constant.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
-import 'package:retrofit/http.dart';
 
 const String APPLICATION_JSON = "application/json";
 const String CONTENT_TYPE = "content-type";

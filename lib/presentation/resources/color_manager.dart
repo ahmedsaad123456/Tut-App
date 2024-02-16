@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 
-
-// we can use hexColor package instead of this 
+// we can use hexColor package instead of this
 class ColorManager {
   static Color primary = HexColor.fromHex("#ED9728");
   static Color darkGrey = HexColor.fromHex("#525252");
@@ -16,6 +15,7 @@ class ColorManager {
   static Color grey2 = HexColor.fromHex("#797979");
   static Color white = HexColor.fromHex("#FFFFFF");
   static Color error = HexColor.fromHex("#e61f34"); // red color
+  static Color black = HexColor.fromHex("#000000");
 }
 
 // An extension allows you to add new functionality to an existing class without modifying the class itself.

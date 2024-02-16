@@ -1,5 +1,4 @@
 class AppStrings {
-
   // no found routes
   static const String noRouteFound = "No route found";
 
@@ -8,7 +7,6 @@ class AppStrings {
   static const String onBoardingTitle2 = "SEE THE BEST COURSE #2";
   static const String onBoardingTitle3 = "SEE THE BEST COURSE #3";
   static const String onBoardingTitle4 = "SEE THE BEST COURSE #4";
-
 
   // onboarding subtitles
   static const String onBoardingSubTitle1 =
@@ -32,11 +30,14 @@ class AppStrings {
   static const String forgetPassword = "Forget Password";
   static const String registerText = "Not a member ? Sign up";
 
+  // loading state
+  static const String loading = "Loading...";
 
+  // retry again
+  static const String retryAgain = "Retry Again";
 
-
-
-
+  // ok button
+    static const String ok = "Ok";
 
 
 }

@@ -1,4 +1,6 @@
 const String IMAGE_PATH = "assets/images";
+const String JSON_PATH = "assets/json";
+
 
 class ImageAssets {
   // splash logo
@@ -17,3 +19,11 @@ class ImageAssets {
   static const String leftArrowIc = "$IMAGE_PATH/left_arrow_ic.svg";
 
   }
+
+class JsonAssets{
+  static const String loading = "$IMAGE_PATH/loading.json";
+  static const String error = "$IMAGE_PATH/error.json";
+  static const String empty = "$IMAGE_PATH/empty.json";
+
+
+}
