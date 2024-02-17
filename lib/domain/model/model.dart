@@ -36,3 +36,5 @@ class DeviceInfo {
 
   DeviceInfo(this.name, this.identifier, this.version);
 }
+
+

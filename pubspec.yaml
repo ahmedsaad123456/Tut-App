@@ -107,6 +107,8 @@ flutter:
     - assets/json/empty.json
     - assets/json/error.json
     - assets/json/loading.json
+    - assets/json/success.json
+
 
 
 

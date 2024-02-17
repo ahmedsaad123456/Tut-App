@@ -49,7 +49,9 @@ class DioFactory {
     dio.interceptors.add(
       InterceptorsWrapper(
         onResponse: (response, handler) {
-          response.data = jsonDecode(response.data as String);
+          if(response.data is String) {
+            response.data = jsonDecode(response.data as String);
+          }
           return handler.next(response);
         },
       ),

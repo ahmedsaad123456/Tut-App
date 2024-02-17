@@ -37,7 +37,13 @@ class AppStrings {
   static const String retryAgain = "Retry Again";
 
   // ok button
-    static const String ok = "Ok";
+  static const String ok = "Ok";
 
+  // success
+  static const String success = "Success";
 
+  // forget password
+  static const String emailHint = 'Email';
+  static const String invalidEmail = "Invalid Email";
+  static const String resetPassword = "Reset Password";
 }

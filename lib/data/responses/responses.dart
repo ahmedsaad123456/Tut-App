@@ -7,8 +7,6 @@ class BaseResponse {
   int? status; // it can be not matching
   @JsonKey(name: "message")
   String? message;
-
-  
 }
 
 @JsonSerializable()
@@ -61,4 +59,19 @@ class AuthenticationResponse extends BaseResponse {
 
   // to json
   Map<String, dynamic> toJson() => _$AuthenticationResponseToJson(this);
+}
+
+@JsonSerializable()
+class ForgotPasswordResponse extends BaseResponse {
+  @JsonKey(name: "support")
+  String? support;
+
+  ForgotPasswordResponse(this.support);
+
+  // from json
+  factory ForgotPasswordResponse.fromJson(Map<String, dynamic> json) =>
+      _$ForgotPasswordResponseFromJson(json);
+
+  // to json
+  Map<String, dynamic> toJson() => _$ForgotPasswordResponseToJson(this);
 }

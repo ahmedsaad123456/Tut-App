@@ -41,4 +41,59 @@ class RepositoryImpl extends Repository {
       return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
     }
   }
+
+  @override
+  Future<Either<Failure, String>> forgotPassword(String email) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        // its safe to call the api
+        final response = await _remoteDataSource.forgotPassword(email);
+        if (response.status == ApiInternalStatus.SUCCESS) {
+          // success
+          // return the data
+          // return right
+          return Right(response.toDomain());
+        }
+        // return biz logic error
+        else {
+          // return left
+          return Left(Failure(response.status ?? ApiInternalStatus.FAILURE,
+              response.message ?? ResponseMessage.DEFAULT));
+        }
+      } catch (error) {
+        return (Left(ErrorHandler.handle(error).failure));
+      }
+    } else {
+      // return conenction error
+      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+    }
+  }
+
+  @override
+  Future<Either<Failure, Authentication>> register(
+      RegisterRequest registerRequest) async {
+    if (await _networkInfo.isConnected) {
+      try {
+        // its safe to call the api
+        final response = await _remoteDataSource.register(registerRequest);
+        if (response.status == ApiInternalStatus.SUCCESS) {
+          // success
+          // return the data
+          // return right
+          return Right(response.toDomain());
+        }
+        // return biz logic error
+        else {
+          // return left
+          return Left(Failure(response.status ?? ApiInternalStatus.FAILURE,
+              response.message ?? ResponseMessage.DEFAULT));
+        }
+      } catch (error) {
+        return (Left(ErrorHandler.handle(error).failure));
+      }
+    } else {
+      // return conenction error
+      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
+    }
+  }
 }
