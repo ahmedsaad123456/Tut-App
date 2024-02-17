@@ -1,3 +1,4 @@
+import 'package:mvvm/data/mapper/mapper.dart';
 import 'package:mvvm/data/network/app_api.dart';
 import 'package:mvvm/data/requests/request.dart';
 import 'package:mvvm/data/responses/responses.dart';
@@ -13,7 +14,7 @@ class RemoteDataSourceImplementer implements RemoteDataSource {
 
   @override
   Future<AuthenticationResponse> login(LoginRequest loginRequest) async {
-    return await _appServiceClient.login(loginRequest.email,
-        loginRequest.password, loginRequest.imei, loginRequest.deviceType);
+    return await _appServiceClient.login(
+        loginRequest.email, loginRequest.password, EMPTY, EMPTY);
   }
 }
