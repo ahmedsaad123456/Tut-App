@@ -27,14 +27,20 @@ class _LoginViewState extends State<LoginView> {
 
   __bind() {
     _viewModel.start();
+
+    // add listeners to trigger the changes in controllers
     _userNameController
         .addListener(() => _viewModel.setUserName(_userNameController.text));
     _passwordController
         .addListener(() => _viewModel.setPassword(_passwordController.text));
 
+
+    // listen if the data is added to this stream controller
     _viewModel.isUserLoggedInSuccessfully.stream.listen((isSuccessLoggedIn) {
       // navigate to main screen
 
+      // use this function to ensure that the current frame has finished
+      // and to ensure that the UI of the current frame is completed
       SchedulerBinding.instance.addPersistentFrameCallback((_) {
         _appPreferences.setIsUserLoggedIn();
         Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
@@ -81,6 +87,7 @@ class _LoginViewState extends State<LoginView> {
                 padding: const EdgeInsets.only(
                     left: AppPadding.p28, right: AppPadding.p28),
                 child: StreamBuilder<bool>(
+                  // listen for outputIsUserNameValid
                   stream: _viewModel.outputIsUserNameValid,
                   builder: (context, snapshot) {
                     return TextFormField(
@@ -104,6 +111,7 @@ class _LoginViewState extends State<LoginView> {
                 padding: const EdgeInsets.only(
                     left: AppPadding.p28, right: AppPadding.p28),
                 child: StreamBuilder<bool>(
+                  // listen for outputIsPasswordValid
                   stream: _viewModel.outputIsPasswordValid,
                   builder: (context, snapshot) {
                     return TextFormField(
@@ -127,6 +135,7 @@ class _LoginViewState extends State<LoginView> {
                 padding: const EdgeInsets.only(
                     left: AppPadding.p28, right: AppPadding.p28),
                 child: StreamBuilder<bool>(
+                  // listen for outputIsAllInputsValid
                   stream: _viewModel.outputIsAllInputsValid,
                   builder: (context, snapshot) {
                     return SizedBox(

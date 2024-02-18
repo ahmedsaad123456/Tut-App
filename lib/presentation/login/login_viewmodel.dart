@@ -76,6 +76,7 @@ class LoginViewModel extends BaseViewModel
     loginObject = loginObject.copyWith(
         password: password); // data class opearation same as kotlin
     // to when the user update the password add it in login stream (isAllInputsValid)
+    // to notify the listeners of inputIsAllInputsValid stream
     _validate();
   }
 
@@ -133,7 +134,7 @@ mixin LoginViewModelInputs {
 }
 
 mixin LoginViewModelOutputs {
-  // two stream
+  // three stream
   Stream<bool> get outputIsUserNameValid;
 
   Stream<bool> get outputIsPasswordValid;
