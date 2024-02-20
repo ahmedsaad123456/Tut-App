@@ -23,6 +23,7 @@ class AppStrings {
 
   // login view
   static const String userName = "Username";
+  static const String mobileNumber = "Mobile Number";
   static const String userNameError = "Username is wrong";
   static const String password = "Password";
   static const String passwordError = "Password is wrong";

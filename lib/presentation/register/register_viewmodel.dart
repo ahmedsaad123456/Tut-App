@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:mvvm/domain/usecase/register_usecase.dart';
 import 'package:mvvm/presentation/base/base_view_mode.dart';
 import 'package:mvvm/presentation/common/freezed_data_classes.dart';
+import 'package:mvvm/presentation/common/state_renderer/state_render.dart';
 import 'package:mvvm/presentation/common/state_renderer/state_render_impl.dart';
 
 class RegisterViewModel extends BaseViewModel
@@ -49,9 +50,21 @@ class RegisterViewModel extends BaseViewModel
   }
 
   @override
-  register() {
-    // TODO: implement register
-    throw UnimplementedError();
+  register() async {
+    inputState.add(
+        LoadingState(stateRendererType: StateRendererType.popupLoadingState));
+    (await _registerUseCase.execute(RegisterUseCaseInput(
+            registerObject.countryMobileCode,
+            registerObject.userName,
+            registerObject.email,
+            registerObject.password,
+            registerObject.mobileNumber,
+            registerObject.profilePicture)))
+        .fold(
+      (failure) => inputState
+          .add(ErrorState(StateRendererType.popupErrorState, failure.message)),
+      (data) => inputState.add(ContentState()),
+    );
   }
 
   // inputs
