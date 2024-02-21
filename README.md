@@ -1,6 +1,6 @@
 # Tut App
 
-A new Flutter project.
+A new Flutter project with clean architecture 
 
 ## Getting Started
 
