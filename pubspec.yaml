@@ -52,6 +52,8 @@ dependencies:
   get_it: ^7.6.7
   lottie: ^3.0.0
   country_code_picker: ^3.0.0
+  image_picker: ^1.0.7
+
 
 
 
@@ -110,6 +112,9 @@ flutter:
     - assets/json/error.json
     - assets/json/loading.json
     - assets/json/success.json
+    - assets/images/photo-camera.svg
+
+
 
 
 

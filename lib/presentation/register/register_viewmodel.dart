@@ -22,12 +22,14 @@ class RegisterViewModel extends BaseViewModel
       StreamController<String>.broadcast();
 
   final StreamController _ProfileStreamController =
-      StreamController<File>.broadcast();
+      StreamController<File?>.broadcast();
 
   final StreamController _isAllInputsValidStreamController =
       StreamController<void>.broadcast();
 
   RegisterUseCase _registerUseCase;
+
+  final StreamController isUserSignUpSuccessfully = StreamController<bool>();
 
   var registerObject = RegisterObject("", "", "", "", "", "");
   RegisterViewModel(this._registerUseCase);
@@ -46,6 +48,7 @@ class RegisterViewModel extends BaseViewModel
     _isAllInputsValidStreamController.close();
     _passwordStreamController.close();
     _ProfileStreamController.close();
+    isUserSignUpSuccessfully.close();
     super.dispose();
   }
 
@@ -63,7 +66,11 @@ class RegisterViewModel extends BaseViewModel
         .fold(
       (failure) => inputState
           .add(ErrorState(StateRendererType.popupErrorState, failure.message)),
-      (data) => inputState.add(ContentState()),
+      (data) {
+        inputState.add(ContentState());
+
+        isUserSignUpSuccessfully.add(true);
+      },
     );
   }
 
@@ -119,7 +126,7 @@ class RegisterViewModel extends BaseViewModel
       .map((isPasswordValid) => isPasswordValid ? null : "Invalid password");
 
   @override
-  Stream<File> get outputIsProfilePictureValid =>
+  Stream<File?> get outputIsProfilePictureValid =>
       _ProfileStreamController.stream.map((profile) => profile);
 
   @override
@@ -277,7 +284,7 @@ mixin RegisterViewModelOutputs {
   Stream<bool> get outputIsPasswordValid;
   Stream<String?> get outputErrorPassword;
 
-  Stream<File> get outputIsProfilePictureValid;
+  Stream<File?> get outputIsProfilePictureValid;
 
   // for the button
   Stream<bool> get outputIsAllInputsValid;

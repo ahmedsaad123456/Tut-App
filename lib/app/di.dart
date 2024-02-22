@@ -1,4 +1,5 @@
 import 'package:get_it/get_it.dart';
+import 'package:image_picker/image_picker.dart';
 import 'package:internet_connection_checker/internet_connection_checker.dart';
 import 'package:mvvm/app/app_prefs.dart';
 import 'package:mvvm/data/data_source/remote_data_source.dart';
@@ -74,5 +75,6 @@ initRegisterModule() {
         .registerFactory<RegisterUseCase>(() => RegisterUseCase(instance()));
     instance.registerFactory<RegisterViewModel>(
         () => RegisterViewModel(instance()));
+    instance.registerFactory<ImagePicker>(() => ImagePicker());
   }
 }

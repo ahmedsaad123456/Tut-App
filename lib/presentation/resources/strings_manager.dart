@@ -28,6 +28,7 @@ class AppStrings {
   static const String password = "Password";
   static const String passwordError = "Password is wrong";
   static const String login = "Login";
+  static const String register = "Register";
   static const String forgetPassword = "Forget Password";
   static const String registerText = "Not a member ? Sign up";
 
@@ -47,4 +48,16 @@ class AppStrings {
   static const String emailHint = 'Email';
   static const String invalidEmail = "Invalid Email";
   static const String resetPassword = "Reset Password";
+
+  // picture
+  static const String profilePicture = "Profile picture";
+  static const String photoGallery = "Photo From gallery";
+  static const String photoCamera = "Photo From camera";
+
+
+  // have an account
+  static const String haveAccount = "Already have an account ? Login";
+
+
+
 }

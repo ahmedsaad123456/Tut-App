@@ -18,6 +18,10 @@ class ImageAssets {
   static const String rightArrowIc = "$IMAGE_PATH/right_arrow_ic.svg";
   static const String leftArrowIc = "$IMAGE_PATH/left_arrow_ic.svg";
 
+  // photo camera icon
+  static const String photoCamera = "$IMAGE_PATH/photo-camera.svg";
+
+
   }
 
 class JsonAssets{
