@@ -24,7 +24,7 @@ class _SplashViewState extends State<SplashView> {
 
   _goNext() async {
     _appPreferences.isUserLoggedIn().then((isUserLoggedIn) => {
-          if (isUserLoggedIn && false)
+          if (isUserLoggedIn)
             {
               Navigator.popAndPushNamed(context, Routes.mainRoute),
             }

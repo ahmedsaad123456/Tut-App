@@ -54,10 +54,13 @@ class AppStrings {
   static const String photoGallery = "Photo From gallery";
   static const String photoCamera = "Photo From camera";
 
-
   // have an account
   static const String haveAccount = "Already have an account ? Login";
 
-
+  // pages
+  static const String home = "Home";
+  static const String notification = "Notification";
+  static const String search = "Search";
+  static const String settings = "Settings";
 
 }
