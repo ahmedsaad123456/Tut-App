@@ -53,6 +53,8 @@ dependencies:
   lottie: ^3.0.0
   country_code_picker: ^3.0.0
   image_picker: ^1.0.7
+  rxdart: ^0.27.7
+
 
 
 
