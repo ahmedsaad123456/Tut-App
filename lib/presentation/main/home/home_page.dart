@@ -1,3 +1,4 @@
+import 'package:carousel_slider/carousel_slider.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm/app/di.dart';
 import 'package:mvvm/domain/model/model.dart';
@@ -59,7 +60,6 @@ class _HomePageState extends State<HomePage> {
               _getStoresWidget(snapshot.data?.stores),
             ],
           );
-          ;
         });
   }
 
@@ -101,7 +101,7 @@ class _HomePageState extends State<HomePage> {
           bottom: AppPadding.p2),
       child: Text(
         title,
-        style: Theme.of(context).textTheme.labelSmall,
+        style: Theme.of(context).textTheme.displaySmall,
       ),
     );
   }
@@ -194,7 +194,6 @@ class _HomePageState extends State<HomePage> {
       return Container();
     }
   }
-
 
   @override
   void dispose() {
