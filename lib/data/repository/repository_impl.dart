@@ -1,4 +1,5 @@
 import 'package:dartz/dartz.dart';
+import 'package:mvvm/data/data_source/local_data_source.dart';
 import 'package:mvvm/data/data_source/remote_data_source.dart';
 import 'package:mvvm/data/mapper/mapper.dart';
 import 'package:mvvm/data/network/error_handler.dart';
@@ -9,10 +10,12 @@ import 'package:mvvm/domain/model/model.dart';
 import 'package:mvvm/domain/repository/repository.dart';
 
 class RepositoryImpl extends Repository {
-  RemoteDataSource _remoteDataSource;
-  NetworkInfo _networkInfo;
+  final RemoteDataSource _remoteDataSource;
+  final LocalDataSource _localDataSource;
+  final NetworkInfo _networkInfo;
 
-  RepositoryImpl(this._remoteDataSource, this._networkInfo);
+  RepositoryImpl(
+      this._remoteDataSource, this._localDataSource, this._networkInfo);
 
   @override
   Future<Either<Failure, Authentication>> login(
@@ -99,28 +102,38 @@ class RepositoryImpl extends Repository {
 
   @override
   Future<Either<Failure, HomeObject>> getHome() async {
-    if (await _networkInfo.isConnected) {
-      try {
-        // its safe to call the api
-        final response = await _remoteDataSource.getHome();
-        if (response.status == ApiInternalStatus.SUCCESS) {
-          // success
-          // return the data
-          // return right
-          return Right(response.toDomain());
+    try {
+      // get from cashe
+      final response = await _localDataSource.getHomeData();
+      return Right(response.toDomain());
+    } catch (errorCashe) {
+      // we have cashe error so we should call API
+
+      if (await _networkInfo.isConnected) {
+        try {
+          // its safe to call the api
+          final response = await _remoteDataSource.getHome();
+          if (response.status == ApiInternalStatus.SUCCESS) {
+            // success
+            // return the data
+            // return right
+            // save response to local data source data source
+            _localDataSource.saveHomeToCache(response);
+            return Right(response.toDomain());
+          }
+          // return biz logic error
+          else {
+            // return left
+            return Left(Failure(response.status ?? ApiInternalStatus.FAILURE,
+                response.message ?? ResponseMessage.DEFAULT));
+          }
+        } catch (error) {
+          return (Left(ErrorHandler.handle(error).failure));
         }
-        // return biz logic error
-        else {
-          // return left
-          return Left(Failure(response.status ?? ApiInternalStatus.FAILURE,
-              response.message ?? ResponseMessage.DEFAULT));
-        }
-      } catch (error) {
-        return (Left(ErrorHandler.handle(error).failure));
+      } else {
+        // return conenction error
+        return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
       }
-    } else {
-      // return conenction error
-      return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
     }
   }
 }
