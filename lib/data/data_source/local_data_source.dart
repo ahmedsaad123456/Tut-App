@@ -15,9 +15,9 @@ abstract class LocalDataSource {
 
   void removeFromCache(String key);
 
-  // Future<StoreDetailsResponse> getStoreDetails();
+  Future<StoreDetailsResponse> getStoreDetails();
 
-  // Future<void> saveStoreDetailsToCache(StoreDetailsResponse response);
+  Future<void> saveStoreDetailsToCache(StoreDetailsResponse response);
 }
 
 class LocalDataSourceImpl implements LocalDataSource {
@@ -42,22 +42,22 @@ class LocalDataSourceImpl implements LocalDataSource {
     cacheMap[CACHE_HOME_KEY] = CachedItem(homeResponse);
   }
 
-  // @override
-  // Future<StoreDetailsResponse> getStoreDetails() async {
-  //   CachedItem? cachedItem = cacheMap[CACHE_STORE_DETAILS_KEY];
+  @override
+  Future<StoreDetailsResponse> getStoreDetails() async {
+    CachedItem? cachedItem = cacheMap[CACHE_STORE_DETAILS_KEY];
 
-  //   if (cachedItem != null &&
-  //       cachedItem.isValid(CACHE_STORE_DETAILS_INTERVAL)) {
-  //     return cachedItem.data;
-  //   } else {
-  //     throw ErrorHandler.handle(DataSource.CACHE_ERROR);
-  //   }
-  // }
+    if (cachedItem != null &&
+        cachedItem.isValid(CACHE_STORE_DETAILS_INTERVAL)) {
+      return cachedItem.data;
+    } else {
+      throw ErrorHandler.handle(DataSource.CASHE_ERROR);
+    }
+  }
 
-  // @override
-  // Future<void> saveStoreDetailsToCache(StoreDetailsResponse response) async {
-  //   cacheMap[CACHE_STORE_DETAILS_KEY] = CachedItem(response);
-  // }
+  @override
+  Future<void> saveStoreDetailsToCache(StoreDetailsResponse response) async {
+    cacheMap[CACHE_STORE_DETAILS_KEY] = CachedItem(response);
+  }
 
   @override
   void clearCache() {
