@@ -41,7 +41,7 @@ class _LoginViewState extends State<LoginView> {
 
       // use this function to ensure that the current frame has finished
       // and to ensure that the UI of the current frame is completed
-      SchedulerBinding.instance.addPersistentFrameCallback((_) {
+      SchedulerBinding.instance.addPostFrameCallback((_) {
         _appPreferences.setIsUserLoggedIn();
         Navigator.of(context).pushReplacementNamed(Routes.mainRoute);
       });

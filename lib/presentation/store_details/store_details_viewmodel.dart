@@ -38,6 +38,7 @@ class StoreDetailsViewModel extends BaseViewModel
   @override
   void dispose() {
     _storeDetailsStreamController.close();
+    super.dispose();
   }
 
   @override

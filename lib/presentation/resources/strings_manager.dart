@@ -72,4 +72,9 @@ class AppStrings {
   static const String about = "About Store";
   static const String storeDetails = "Store details";
 
+  // settings
+  static const String changeLanguage = "Change language";
+  static const String contactUs = "Contact Us";
+  static const String inviteYourFriends = "Invite Your Friends";
+  static const String logout = "Logout";
 }

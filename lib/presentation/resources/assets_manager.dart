@@ -1,7 +1,6 @@
 const String IMAGE_PATH = "assets/images";
 const String JSON_PATH = "assets/json";
 
-
 class ImageAssets {
   // splash logo
   static const String splashLogo = "$IMAGE_PATH/splash_logo.png";
@@ -21,15 +20,18 @@ class ImageAssets {
   // photo camera icon
   static const String photoCamera = "$IMAGE_PATH/photo-camera.svg";
 
+  // settings
+  static const String changeLang = "$IMAGE_PATH/change_lang_ic.svg";
+  static const String contactUs = "$IMAGE_PATH/contact_us_ic.svg";
+  static const String inviteFriends = "$IMAGE_PATH/invite_friends_ic.svg";
+  static const String logout = "$IMAGE_PATH/logout_ic.svg";
+  static const String rightArrowSettings = "$IMAGE_PATH/right_arrow_settings_ic.svg";
 
-  }
+}
 
-class JsonAssets{
+class JsonAssets {
   static const String loading = "$JSON_PATH/loading.json";
   static const String error = "$JSON_PATH/error.json";
   static const String empty = "$JSON_PATH/empty.json";
   static const String success = "$JSON_PATH/success.json";
-
-
-
 }
