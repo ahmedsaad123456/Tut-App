@@ -12,7 +12,7 @@ abstract class RemoteDataSource {
 }
 
 class RemoteDataSourceImplementer implements RemoteDataSource {
-  AppServiceClient _appServiceClient;
+  final AppServiceClient _appServiceClient;
 
   RemoteDataSourceImplementer(this._appServiceClient);
 

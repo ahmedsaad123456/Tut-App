@@ -1,3 +1,4 @@
+import 'package:easy_localization/easy_localization.dart';
 import 'package:flutter/material.dart';
 import 'package:mvvm/data/mapper/mapper.dart';
 import 'package:mvvm/presentation/common/state_renderer/state_render.dart';
@@ -15,7 +16,7 @@ class LoadingState extends FlowState {
   String message;
 
   LoadingState({required this.stateRendererType, String? message})
-      : message = message ?? AppStrings.loading;
+      : message = message ?? AppStrings.loading.tr();
 
   @override
   String getMessage() => message;
@@ -77,7 +78,7 @@ extension FlowStateExtension on FlowState {
   Widget getScreenWidget(BuildContext context, Widget contentScreenWidget,
       Function retryActionFunction) {
     switch (runtimeType) {
-      case LoadingState:
+      case const (LoadingState):
         {
           if (getStateRendererType() == StateRendererType.popupLoadingState) {
             // showing popup dialog
@@ -93,7 +94,7 @@ extension FlowStateExtension on FlowState {
             );
           }
         }
-      case ErrorState:
+      case const (ErrorState):
         {
           dismissDialog(context);
           if (getStateRendererType() == StateRendererType.popupErrorState) {
@@ -110,12 +111,12 @@ extension FlowStateExtension on FlowState {
             );
           }
         }
-      case ContentState:
+      case const (ContentState):
         {
           dismissDialog(context);
           return contentScreenWidget;
         }
-      case EmptyState:
+      case const (EmptyState):
         {
           return StateRenderer(
             stateRendererType: getStateRendererType(),
@@ -123,14 +124,14 @@ extension FlowStateExtension on FlowState {
             retryActionFunction: retryActionFunction,
           );
         }
-      case SuccessState:
+      case const (SuccessState):
         {
           // i should check if we are showing loading popup to remove it before showing success popup
           dismissDialog(context);
 
           // show popup
           showPopup(context, StateRendererType.popupSuccess, getMessage(),
-              title: AppStrings.success);
+              title: AppStrings.success.tr());
           // return content ui of the screen
           return contentScreenWidget;
         }
@@ -153,7 +154,7 @@ extension FlowStateExtension on FlowState {
   showPopup(
       BuildContext context, StateRendererType stateRendererType, String message,
       {String title = EMPTY}) {
-    WidgetsBinding.instance?.addPostFrameCallback((_) => showDialog(
+    WidgetsBinding.instance.addPostFrameCallback((_) => showDialog(
         context: context,
         builder: (BuildContext context) => StateRenderer(
             stateRendererType: stateRendererType,

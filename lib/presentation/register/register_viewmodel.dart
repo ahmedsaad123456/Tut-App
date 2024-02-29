@@ -1,11 +1,13 @@
 import 'dart:async';
 import 'dart:io';
 
+import 'package:easy_localization/easy_localization.dart';
 import 'package:mvvm/domain/usecase/register_usecase.dart';
 import 'package:mvvm/presentation/base/base_view_mode.dart';
 import 'package:mvvm/presentation/common/freezed_data_classes.dart';
 import 'package:mvvm/presentation/common/state_renderer/state_render.dart';
 import 'package:mvvm/presentation/common/state_renderer/state_render_impl.dart';
+import 'package:mvvm/presentation/resources/strings_manager.dart';
 
 class RegisterViewModel extends BaseViewModel
     with RegisterViewModelInputs, RegisterViewModelOutputs {
@@ -105,7 +107,7 @@ class RegisterViewModel extends BaseViewModel
 
   @override
   Stream<String?> get outputErrorEmail => outputIsEmailValid
-      .map((isEmailValid) => isEmailValid ? null : "Invalid email");
+      .map((isEmailValid) => isEmailValid ? null : AppStrings.invalidEmail.tr());
 
   @override
   Stream<bool> get outputIsMobileNumberValid =>
@@ -115,15 +117,15 @@ class RegisterViewModel extends BaseViewModel
   @override
   Stream<String?> get outputErrorMobileNumber =>
       outputIsMobileNumberValid.map((isMobileNumberValid) =>
-          isMobileNumberValid ? null : "Invalid mobile number");
+          isMobileNumberValid ? null : AppStrings.mobileNumberInvalid.tr());
 
   @override
   Stream<bool> get outputIsPasswordValid => _passwordStreamController.stream
       .map((password) => _isPasswordValid(password));
 
   @override
-  Stream<String?> get outputErrorPassword => outputIsPasswordValid
-      .map((isPasswordValid) => isPasswordValid ? null : "Invalid password");
+  Stream<String?> get outputErrorPassword => outputIsPasswordValid.map(
+      (isPasswordValid) => isPasswordValid ? null : AppStrings.passwordInvalid.tr());
 
   @override
   Stream<File?> get outputIsProfilePictureValid =>
@@ -134,8 +136,8 @@ class RegisterViewModel extends BaseViewModel
       .map((userName) => _isUserNameValid(userName));
 
   @override
-  Stream<String?> get outputErrorUserName => outputIsUserNameValid
-      .map((isUserNameValid) => isUserNameValid ? null : "Invalid username");
+  Stream<String?> get outputErrorUserName => outputIsUserNameValid.map(
+      (isUserNameValid) => isUserNameValid ? null : AppStrings.userNameInvalid.tr());
 
   @override
   setUserName(String userName) {
