@@ -3,6 +3,8 @@ import 'package:mvvm/data/network/app_api.dart';
 import 'package:mvvm/data/requests/request.dart';
 import 'package:mvvm/data/responses/responses.dart';
 
+//================================================================================================================
+
 abstract class RemoteDataSource {
   Future<AuthenticationResponse> login(LoginRequest loginRequest);
   Future<ForgotPasswordResponse> forgotPassword(String email);
@@ -11,10 +13,14 @@ abstract class RemoteDataSource {
   Future<StoreDetailsResponse> getStoreDetails();
 }
 
+//================================================================================================================
+
 class RemoteDataSourceImplementer implements RemoteDataSource {
   final AppServiceClient _appServiceClient;
 
   RemoteDataSourceImplementer(this._appServiceClient);
+
+  //================================================================================================================
 
   @override
   Future<AuthenticationResponse> login(LoginRequest loginRequest) async {
@@ -22,10 +28,14 @@ class RemoteDataSourceImplementer implements RemoteDataSource {
         loginRequest.email, loginRequest.password, EMPTY, EMPTY);
   }
 
+  //================================================================================================================
+
   @override
   Future<ForgotPasswordResponse> forgotPassword(String email) async {
     return await _appServiceClient.forgotPassword(email);
   }
+
+  //================================================================================================================
 
   @override
   Future<AuthenticationResponse> register(
@@ -39,13 +49,19 @@ class RemoteDataSourceImplementer implements RemoteDataSource {
         "");
   }
 
+  //================================================================================================================
+
   @override
   Future<HomeResponse> getHome() async {
     return await _appServiceClient.getHome();
   }
 
+  //================================================================================================================
+
   @override
   Future<StoreDetailsResponse> getStoreDetails() async {
     return await _appServiceClient.getStoreDetails();
   }
+
+  //================================================================================================================
 }

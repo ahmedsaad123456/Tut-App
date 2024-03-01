@@ -10,6 +10,9 @@ import 'package:mvvm/presentation/resources/strings_manager.dart';
 import 'package:mvvm/presentation/splash/splash.dart';
 import 'package:mvvm/presentation/store_details/store_details.dart';
 
+
+//================================================================================================================
+
 class Routes {
   static const splashRoute = "/";
   static const onBoardingRoute = "/onBoarding";
@@ -19,6 +22,8 @@ class Routes {
   static const mainRoute = "/main";
   static const storeDetailsRoute = "/storeDetails";
 }
+
+//================================================================================================================
 
 class RouteGenerator {
   static Route<dynamic> getRoute(RouteSettings routeSettings) {
@@ -47,6 +52,8 @@ class RouteGenerator {
     }
   }
 
+  //================================================================================================================
+
   static Route<dynamic> unDefinedRoute() {
     return MaterialPageRoute(
         builder: (_) => Scaffold(
@@ -56,4 +63,9 @@ class RouteGenerator {
               body: Center(child: const Text(AppStrings.noRouteFound).tr()),
             ));
   }
+
+  //================================================================================================================
+
 }
+
+//================================================================================================================

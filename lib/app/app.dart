@@ -9,25 +9,38 @@ import 'package:mvvm/presentation/resources/theme_manager.dart';
 class MyApp extends StatefulWidget {
   MyApp._internal(); // private named constructor . it used to create static variables or methods
 
+  //================================================================================================================
+
+
   int appState = 0;
   static final MyApp instance =
       MyApp._internal(); // single instance -- singleton
 
+
+  //================================================================================================================
+
   // to return the same instance when called multiple times
   factory MyApp() => instance; // factory for the class instance
+
+  //================================================================================================================
 
   @override
   State<MyApp> createState() => _MyAppState();
 }
 
 class _MyAppState extends State<MyApp> {
+
   final AppPreferences _appPreferences = instance<AppPreferences>();
+
+  //================================================================================================================
 
   @override
   void didChangeDependencies() {
     _appPreferences.getLocal().then((locale) => {context.setLocale(locale)});
     super.didChangeDependencies();
   }
+
+  //================================================================================================================
 
   @override
   Widget build(BuildContext context) {
@@ -41,6 +54,9 @@ class _MyAppState extends State<MyApp> {
       debugShowCheckedModeBanner: false,
     );
   }
+
+  //================================================================================================================
+
 }
 
 

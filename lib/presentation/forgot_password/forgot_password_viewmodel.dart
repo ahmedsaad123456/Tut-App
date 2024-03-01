@@ -5,6 +5,9 @@ import 'package:mvvm/presentation/base/base_view_mode.dart';
 import 'package:mvvm/presentation/common/state_renderer/state_render.dart';
 import 'package:mvvm/presentation/common/state_renderer/state_render_impl.dart';
 
+
+//================================================================================================================
+
 class ForgotPasswordViewModel extends BaseViewModel
     with ForgotPasswordViewModelInput, ForgotPasswordViewModelOutput {
   final StreamController _emailStreamController =
@@ -18,11 +21,15 @@ class ForgotPasswordViewModel extends BaseViewModel
 
   var email = "";
 
+  //================================================================================================================
+
   // input
   @override
   void start() {
     inputState.add(ContentState());
   }
+
+  //================================================================================================================
 
   @override
   forgotPassword() async {
@@ -36,6 +43,8 @@ class ForgotPasswordViewModel extends BaseViewModel
     });
   }
 
+  //================================================================================================================
+
   @override
   setEmail(String email) {
     inputEmail.add(email);
@@ -43,18 +52,24 @@ class ForgotPasswordViewModel extends BaseViewModel
     _validate();
   }
 
+  //================================================================================================================
+
   @override
   Sink get inputEmail => _emailStreamController.sink;
 
   @override
   Sink get inputIsAllInputValid => _isAllInputValidStreamController.sink;
 
+
+  //================================================================================================================
   // output
   @override
   void dispose() {
     _emailStreamController.close();
     _isAllInputValidStreamController.close();
   }
+
+  //================================================================================================================
 
   @override
   Stream<bool> get outputIsEmailValid =>
@@ -64,6 +79,8 @@ class ForgotPasswordViewModel extends BaseViewModel
   Stream<bool> get outputIsAllInputValid =>
       _isAllInputValidStreamController.stream
           .map((isAllInputValid) => _isAllInputValid());
+
+  //================================================================================================================
 
   _isAllInputValid() {
     return isEmailValid(email);
@@ -76,8 +93,12 @@ class ForgotPasswordViewModel extends BaseViewModel
   _validate() {
     inputIsAllInputValid.add(null);
   }
+
+  //================================================================================================================
 }
 
+
+//================================================================================================================
 mixin ForgotPasswordViewModelInput {
   forgotPassword();
 
@@ -88,8 +109,12 @@ mixin ForgotPasswordViewModelInput {
   Sink get inputIsAllInputValid;
 }
 
+//================================================================================================================
+
 mixin ForgotPasswordViewModelOutput {
   Stream<bool> get outputIsEmailValid;
 
   Stream<bool> get outputIsAllInputValid;
 }
+
+//================================================================================================================

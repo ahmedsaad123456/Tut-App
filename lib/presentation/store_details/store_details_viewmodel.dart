@@ -7,6 +7,9 @@ import 'package:mvvm/presentation/common/state_renderer/state_render.dart';
 import 'package:mvvm/presentation/common/state_renderer/state_render_impl.dart';
 import 'package:rxdart/rxdart.dart';
 
+
+//================================================================================================================
+
 class StoreDetailsViewModel extends BaseViewModel
     with StoreDetailsViewModelInput, StoreDetailsViewModelOutput {
   final _storeDetailsStreamController = BehaviorSubject<StoreDetails>();
@@ -15,10 +18,14 @@ class StoreDetailsViewModel extends BaseViewModel
 
   StoreDetailsViewModel(this.storeDetailsUseCase);
 
+  //================================================================================================================
+
   @override
   start() async {
     _loadData();
   }
+
+  //================================================================================================================
 
   _loadData() async {
     inputState.add(LoadingState(
@@ -35,11 +42,15 @@ class StoreDetailsViewModel extends BaseViewModel
     );
   }
 
+  //================================================================================================================
+
   @override
   void dispose() {
     _storeDetailsStreamController.close();
     super.dispose();
   }
+
+  //================================================================================================================
 
   @override
   Sink get inputStoreDetails => _storeDetailsStreamController.sink;
@@ -50,10 +61,18 @@ class StoreDetailsViewModel extends BaseViewModel
       _storeDetailsStreamController.stream.map((stores) => stores);
 }
 
+
+//================================================================================================================
+
 mixin StoreDetailsViewModelInput {
   Sink get inputStoreDetails;
 }
 
+
+//================================================================================================================
+
 mixin StoreDetailsViewModelOutput {
   Stream<StoreDetails> get outputStoreDetails;
 }
+
+//================================================================================================================

@@ -4,10 +4,14 @@ import 'package:mvvm/data/mapper/mapper.dart';
 import 'package:mvvm/presentation/common/state_renderer/state_render.dart';
 import 'package:mvvm/presentation/resources/strings_manager.dart';
 
+//================================================================================================================
+
 abstract class FlowState {
   StateRendererType getStateRendererType();
   String getMessage();
 }
+
+//================================================================================================================
 
 // loading State (POPUP , FULLSCREEN)
 
@@ -24,6 +28,8 @@ class LoadingState extends FlowState {
   StateRendererType getStateRendererType() => stateRendererType;
 }
 
+//================================================================================================================
+
 // error state (POPUP , FULLSCREEN)
 
 class ErrorState extends FlowState {
@@ -38,6 +44,8 @@ class ErrorState extends FlowState {
   StateRendererType getStateRendererType() => stateRendererType;
 }
 
+//================================================================================================================
+
 // CONTENT STATE
 class ContentState extends FlowState {
   ContentState();
@@ -47,6 +55,8 @@ class ContentState extends FlowState {
   @override
   StateRendererType getStateRendererType() => StateRendererType.contentState;
 }
+
+//================================================================================================================
 
 // EMPTY state
 class EmptyState extends FlowState {
@@ -61,6 +71,8 @@ class EmptyState extends FlowState {
       StateRendererType.fullScreenEmptyState;
 }
 
+//================================================================================================================
+
 // success state
 class SuccessState extends FlowState {
   String message;
@@ -74,10 +86,14 @@ class SuccessState extends FlowState {
   StateRendererType getStateRendererType() => StateRendererType.popupSuccess;
 }
 
+//================================================================================================================
+
 extension FlowStateExtension on FlowState {
   Widget getScreenWidget(BuildContext context, Widget contentScreenWidget,
       Function retryActionFunction) {
     switch (runtimeType) {
+      //================================================================================================================
+
       case const (LoadingState):
         {
           if (getStateRendererType() == StateRendererType.popupLoadingState) {
@@ -94,6 +110,9 @@ extension FlowStateExtension on FlowState {
             );
           }
         }
+
+      //================================================================================================================
+
       case const (ErrorState):
         {
           dismissDialog(context);
@@ -111,11 +130,17 @@ extension FlowStateExtension on FlowState {
             );
           }
         }
+
+      //================================================================================================================
+
       case const (ContentState):
         {
           dismissDialog(context);
           return contentScreenWidget;
         }
+
+      //================================================================================================================
+
       case const (EmptyState):
         {
           return StateRenderer(
@@ -124,6 +149,9 @@ extension FlowStateExtension on FlowState {
             retryActionFunction: retryActionFunction,
           );
         }
+
+      //================================================================================================================
+
       case const (SuccessState):
         {
           // i should check if we are showing loading popup to remove it before showing success popup
@@ -135,6 +163,9 @@ extension FlowStateExtension on FlowState {
           // return content ui of the screen
           return contentScreenWidget;
         }
+
+      //================================================================================================================
+
       default:
         {
           return contentScreenWidget;
@@ -142,14 +173,20 @@ extension FlowStateExtension on FlowState {
     }
   }
 
+  //================================================================================================================
+
   dismissDialog(BuildContext context) {
     if (_isThereCurrentDialogShowing(context)) {
       Navigator.of(context, rootNavigator: true).pop(true);
     }
   }
 
+  //================================================================================================================
+
   _isThereCurrentDialogShowing(BuildContext context) =>
       ModalRoute.of(context)?.isCurrent != true;
+
+  //================================================================================================================
 
   showPopup(
       BuildContext context, StateRendererType stateRendererType, String message,

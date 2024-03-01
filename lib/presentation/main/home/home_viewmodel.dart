@@ -7,6 +7,8 @@ import 'package:mvvm/presentation/common/state_renderer/state_render.dart';
 import 'package:mvvm/presentation/common/state_renderer/state_render_impl.dart';
 import 'package:rxdart/rxdart.dart';
 
+//================================================================================================================
+
 class HomeViewModel extends BaseViewModel
     with HomeViewModelInput, HomeViewModelOutput {
   // BehaviorSubject to retain the latest HomeViewObject value
@@ -18,11 +20,14 @@ class HomeViewModel extends BaseViewModel
 
   HomeViewModel(this._homeUseCase);
 
+  //================================================================================================================
   // --  inputs
   @override
   void start() {
     _getHomeData();
   }
+
+  //================================================================================================================
 
   _getHomeData() async {
     inputState.add(LoadingState(
@@ -42,11 +47,14 @@ class HomeViewModel extends BaseViewModel
     });
   }
 
+  //================================================================================================================
   @override
   void dispose() {
     _dataStreamController.close();
     super.dispose();
   }
+
+  //================================================================================================================
 
   @override
   Sink get inputHomeData => _dataStreamController.sink;
@@ -55,15 +63,24 @@ class HomeViewModel extends BaseViewModel
   @override
   Stream<HomeViewObject> get outputHomeData =>
       _dataStreamController.stream.map((data) => data);
+
+  //================================================================================================================
 }
+
+
+//================================================================================================================
 
 mixin HomeViewModelInput {
   Sink get inputHomeData;
 }
 
+//================================================================================================================
+
 mixin HomeViewModelOutput {
   Stream<HomeViewObject> get outputHomeData;
 }
+
+//================================================================================================================
 
 class HomeViewObject {
   List<Store> stores;
@@ -72,3 +89,5 @@ class HomeViewObject {
 
   HomeViewObject(this.stores, this.services, this.banners);
 }
+
+//================================================================================================================

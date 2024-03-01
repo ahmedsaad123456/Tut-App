@@ -10,6 +10,8 @@ class AppPreferences {
   final SharedPreferences _sharedPreferences;
   AppPreferences(this._sharedPreferences);
 
+  //================================================================================================================
+
   Future<String> getAppLanguage() async {
     String? language = _sharedPreferences.getString(PREFS_KEY_LANG);
     if (language != null && language.isNotEmpty) {
@@ -18,6 +20,9 @@ class AppPreferences {
       return LanguageType.ENGLISH.getValue();
     }
   }
+
+  //================================================================================================================
+
 
   Future<void> setAppLanguage() async {
     String currentLanguage = await getAppLanguage();
@@ -30,6 +35,9 @@ class AppPreferences {
     }
   }
 
+  //================================================================================================================
+
+
   Future<Locale> getLocal() async {
     String currentLanguage = await getAppLanguage();
     if (currentLanguage == LanguageType.ARABIC.getValue()) {
@@ -39,23 +47,37 @@ class AppPreferences {
     }
   }
 
+  //================================================================================================================
+
+
   Future<void> setOnBoardingScreenViewed() async {
     await _sharedPreferences.setBool(PREFS_KEY_ONBOARDING_SCREEN, true);
   }
+
+  //================================================================================================================
 
   Future<bool> isOnBoardingScreenViewed() async {
     return _sharedPreferences.getBool(PREFS_KEY_ONBOARDING_SCREEN) ?? false;
   }
 
+  //================================================================================================================
+
   Future<void> setIsUserLoggedIn() async {
     await _sharedPreferences.setBool(PREFS_KEY_IS_USER_LOGGED_IN, true);
   }
+
+  //================================================================================================================
 
   Future<bool> isUserLoggedIn() async {
     return _sharedPreferences.getBool(PREFS_KEY_IS_USER_LOGGED_IN) ?? false;
   }
 
+  //================================================================================================================
+
   Future<void> logout() async {
     _sharedPreferences.remove(PREFS_KEY_IS_USER_LOGGED_IN);
   }
+
+  //================================================================================================================
+
 }

@@ -8,12 +8,16 @@ import 'package:mvvm/presentation/resources/color_manager.dart';
 import 'package:mvvm/presentation/resources/strings_manager.dart';
 import 'package:mvvm/presentation/resources/values_manager.dart';
 
+//================================================================================================================
+
 class ForgotPasswordView extends StatefulWidget {
   const ForgotPasswordView({super.key});
 
   @override
   ForgotPasswordViewState createState() => ForgotPasswordViewState();
 }
+
+//================================================================================================================
 
 class ForgotPasswordViewState extends State<ForgotPasswordView> {
   final _formKey = GlobalKey<FormState>();
@@ -23,17 +27,23 @@ class ForgotPasswordViewState extends State<ForgotPasswordView> {
   final ForgotPasswordViewModel _viewModel =
       instance<ForgotPasswordViewModel>();
 
+  //================================================================================================================
+
   bind() {
     _viewModel.start();
     _emailTextEditingController.addListener(
         () => _viewModel.setEmail(_emailTextEditingController.text));
   }
 
+  //================================================================================================================
+
   @override
   void initState() {
     bind();
     super.initState();
   }
+
+  //================================================================================================================
 
   @override
   Widget build(BuildContext context) {
@@ -50,6 +60,8 @@ class ForgotPasswordViewState extends State<ForgotPasswordView> {
       ),
     );
   }
+
+  //================================================================================================================
 
   Widget _getContentWidget() {
     return Container(
@@ -111,4 +123,8 @@ class ForgotPasswordViewState extends State<ForgotPasswordView> {
       ),
     );
   }
+
+  //================================================================================================================
 }
+
+//================================================================================================================

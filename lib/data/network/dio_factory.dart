@@ -6,11 +6,17 @@ import 'package:mvvm/app/app_prefs.dart';
 import 'package:mvvm/app/constant.dart';
 import 'package:pretty_dio_logger/pretty_dio_logger.dart';
 
+
+//================================================================================================================
+
 const String APPLICATION_JSON = "application/json";
 const String CONTENT_TYPE = "content-type";
 const String ACCEPT = "accept";
 const String AUTHORIZATION = "authorization";
 const String DEFAULT_LANGUAGE = "language";
+
+
+//================================================================================================================
 
 class DioFactory {
   final AppPreferences _appPreferences;
@@ -60,3 +66,5 @@ class DioFactory {
     return dio;
   }
 }
+
+//================================================================================================================

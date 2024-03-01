@@ -4,6 +4,8 @@ import 'package:device_info/device_info.dart';
 import 'package:flutter/services.dart';
 import 'package:mvvm/domain/model/model.dart';
 
+//================================================================================================================
+
 Future<DeviceInfo> getDeviceDetails() async {
   String name = "Unknown";
   String identifier = "Unknown";
@@ -31,3 +33,5 @@ Future<DeviceInfo> getDeviceDetails() async {
 
   return DeviceInfo(name, identifier, version);
 }
+
+//================================================================================================================

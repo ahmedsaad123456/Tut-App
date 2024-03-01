@@ -6,6 +6,9 @@ import 'package:mvvm/presentation/base/base_view_mode.dart';
 import 'package:mvvm/presentation/resources/assets_manager.dart';
 import 'package:mvvm/presentation/resources/strings_manager.dart';
 
+
+//================================================================================================================
+
 class OnBoardingViewModel extends BaseViewModel
     with OnBoardingViewModelInputs, OnBoardingViewModelOutputs {
   // stream controllers
@@ -16,11 +19,15 @@ class OnBoardingViewModel extends BaseViewModel
 
   int _currentIndex = 0;
 
+  //================================================================================================================
+
   // inputs
   @override
   void dispose() {
     _streamController.close();
   }
+
+  //================================================================================================================
 
   @override
   void start() {
@@ -28,6 +35,8 @@ class OnBoardingViewModel extends BaseViewModel
     // send this slider data to our view
     _postDataToView();
   }
+
+  //================================================================================================================
 
   @override
   int goNext() {
@@ -38,6 +47,8 @@ class OnBoardingViewModel extends BaseViewModel
 
     return _currentIndex;
   }
+
+  //================================================================================================================
 
   @override
   int goPrevious() {
@@ -50,11 +61,15 @@ class OnBoardingViewModel extends BaseViewModel
     return _currentIndex;
   }
 
+  //================================================================================================================
+
   @override
   void onPageChanged(int index) {
     _currentIndex = index;
     _postDataToView();
   }
+
+  //================================================================================================================
 
   @override
   Sink get inputSliderViewObject => _streamController.sink;
@@ -62,6 +77,8 @@ class OnBoardingViewModel extends BaseViewModel
   @override
   Stream<SliderViewObject> get outputSliderViewObject =>
       _streamController.stream.map((sliderViewObject) => sliderViewObject);
+
+  //================================================================================================================
 
   // private functions
   List<SliderObject> _getSliderData() => [
@@ -79,7 +96,11 @@ class OnBoardingViewModel extends BaseViewModel
     inputSliderViewObject.add(
         SliderViewObject(_list[_currentIndex], _list.length, _currentIndex));
   }
+
+  //================================================================================================================
 }
+
+//================================================================================================================
 
 // inputs mean the orders that our view model will recieve from our view
 mixin OnBoardingViewModelInputs {
@@ -91,10 +112,14 @@ mixin OnBoardingViewModelInputs {
       get inputSliderViewObject; // this is the way to add data to the stream .. stream input
 }
 
+//================================================================================================================
+
 // outputs mean data or results that will be sent from our view model to our view
 mixin OnBoardingViewModelOutputs {
   Stream<SliderViewObject> get outputSliderViewObject;
 }
+
+//================================================================================================================
 
 class SliderViewObject {
   SliderObject sliderObject;
@@ -103,3 +128,5 @@ class SliderViewObject {
 
   SliderViewObject(this.sliderObject, this.numOfSlides, this.currentIndex);
 }
+
+//================================================================================================================

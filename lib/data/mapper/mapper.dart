@@ -9,6 +9,8 @@ import 'package:mvvm/domain/model/model.dart';
 const EMPTY = "";
 const ZERO = 0;
 
+//================================================================================================================
+
 extension CutomerResponseMapper on CustomerResponse? {
   Customer toDomain() {
     return Customer(
@@ -18,12 +20,16 @@ extension CutomerResponseMapper on CustomerResponse? {
   }
 }
 
+//================================================================================================================
+
 extension ContactsResponseMapper on ContactsResponse? {
   Contacts toDomain() {
     return Contacts(this?.email?.orEmpty() ?? EMPTY,
         this?.phone?.orEmpty() ?? EMPTY, this?.link?.orEmpty() ?? EMPTY);
   }
 }
+
+//================================================================================================================
 
 extension AuthenticationResponseMapper on AuthenticationResponse? {
   Authentication toDomain() {
@@ -32,11 +38,15 @@ extension AuthenticationResponseMapper on AuthenticationResponse? {
   }
 }
 
+//================================================================================================================
+
 extension ForgotPasswordResponseMapper on ForgotPasswordResponse? {
   String toDomain() {
     return this?.support?.orEmpty() ?? EMPTY;
   }
 }
+
+//================================================================================================================
 
 extension ServiecResponseMapper on ServiceResponse? {
   Service toDomain() {
@@ -45,6 +55,8 @@ extension ServiecResponseMapper on ServiceResponse? {
   }
 }
 
+//================================================================================================================
+
 extension StoreResponseMapper on StoresResponse? {
   Store toDomain() {
     return Store(this?.id?.orZero() ?? ZERO, this?.title?.orEmpty() ?? EMPTY,
@@ -52,12 +64,16 @@ extension StoreResponseMapper on StoresResponse? {
   }
 }
 
+//================================================================================================================
+
 extension BannerResponseMapper on BannersResponse? {
   BannerAd toDomain() {
     return BannerAd(this?.id?.orZero() ?? ZERO, this?.title?.orEmpty() ?? EMPTY,
         this?.image?.orEmpty() ?? EMPTY, this?.link?.orEmpty() ?? EMPTY);
   }
 }
+
+//================================================================================================================
 
 extension HomeResponseMapper on HomeResponse? {
   HomeObject toDomain() {
@@ -90,6 +106,8 @@ extension HomeResponseMapper on HomeResponse? {
   }
 }
 
+//================================================================================================================
+
 extension StoreDetailsResponseMapper on StoreDetailsResponse? {
   StoreDetails toDomain() {
     return StoreDetails(
@@ -101,3 +119,5 @@ extension StoreDetailsResponseMapper on StoreDetailsResponse? {
         this?.about?.orEmpty() ?? EMPTY);
   }
 }
+
+//================================================================================================================

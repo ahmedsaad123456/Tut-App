@@ -4,8 +4,13 @@ import 'package:mvvm/presentation/resources/fonts_manager.dart';
 import 'package:mvvm/presentation/resources/styles_manager.dart';
 import 'package:mvvm/presentation/resources/values_manager.dart';
 
+
+//================================================================================================================
+
 ThemeData getApplicationTheme() {
   return ThemeData(
+
+    //================================================================================================================
     // main colors of the app
     primaryColor: ColorManager.primary,
     primaryColorLight: ColorManager.primaryOpacity70,
@@ -17,6 +22,8 @@ ThemeData getApplicationTheme() {
 
     // accentColor : ColorManager.grey
 
+
+    //================================================================================================================
     // card view theme
 
     cardTheme: CardTheme(
@@ -24,6 +31,7 @@ ThemeData getApplicationTheme() {
         shadowColor: ColorManager.grey,
         elevation: AppSize.s4),
 
+    //================================================================================================================
     // App bar theme
 
     appBarTheme: AppBarTheme(
@@ -35,6 +43,8 @@ ThemeData getApplicationTheme() {
           getRegularStyle(color: ColorManager.white, fontSize: FontSize.s16),
     ),
 
+
+    //================================================================================================================
     // button theme
 
     buttonTheme: ButtonThemeData(
@@ -44,6 +54,7 @@ ThemeData getApplicationTheme() {
       splashColor: ColorManager.primaryOpacity70, // test it
     ),
 
+    //================================================================================================================
     // elevated button theme
 
     elevatedButtonTheme: ElevatedButtonThemeData(
@@ -55,6 +66,8 @@ ThemeData getApplicationTheme() {
       ),
     ),
 
+
+    //================================================================================================================
     // text theme
     textTheme: TextTheme(
         // headline 1
@@ -78,6 +91,8 @@ ThemeData getApplicationTheme() {
         // bodyText 1
         bodyLarge: getRegularStyle(color: ColorManager.grey)),
 
+
+    //================================================================================================================
     // input decoration theme (text form field)
 
     inputDecorationTheme: InputDecorationTheme(

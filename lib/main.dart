@@ -6,11 +6,15 @@ import 'package:mvvm/presentation/resources/language_manager.dart';
 
 import 'app/app.dart';
 
+//================================================================================================================
+
 // MVVM : Model view viewModel
 // app layer
 // presentation layer
 // data layer
 // domain layer
+
+//================================================================================================================
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

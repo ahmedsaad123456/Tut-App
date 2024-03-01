@@ -4,6 +4,9 @@ import 'dart:async';
 import 'package:mvvm/presentation/common/state_renderer/state_render_impl.dart';
 import 'package:rxdart/rxdart.dart';
 
+
+//================================================================================================================
+
 abstract class BaseViewModel extends BaseViewModelInputs
     with BaseViewModelOutputs {
   // shared variables and functions that will be used through any view model.
@@ -24,6 +27,8 @@ abstract class BaseViewModel extends BaseViewModelInputs
   }
 }
 
+//================================================================================================================
+
 abstract class BaseViewModelInputs {
   void start(); // will be called while init. of view model.
   void dispose(); // will be called while view model dies.
@@ -31,7 +36,11 @@ abstract class BaseViewModelInputs {
   Sink get inputState;
 }
 
+//================================================================================================================
+
 // mixin to can use this class in many classes and with keyword "with"
 mixin BaseViewModelOutputs {
   Stream<FlowState> get outputState;
 }
+
+//================================================================================================================

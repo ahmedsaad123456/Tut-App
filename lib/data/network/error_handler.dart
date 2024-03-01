@@ -3,6 +3,9 @@ import 'package:easy_localization/easy_localization.dart';
 import 'package:mvvm/data/network/failure.dart';
 import 'package:mvvm/presentation/resources/strings_manager.dart';
 
+
+//================================================================================================================
+
 enum DataSource {
   SUCCESS,
   NO_CONTENT,
@@ -19,6 +22,8 @@ enum DataSource {
   NO_INTERNET_CONNECTION,
   DEFAULT,
 }
+
+//================================================================================================================
 
 class ResponseCode {
   // API status code
@@ -42,8 +47,13 @@ class ResponseCode {
   static const int NO_INTERNET_CONNECTION = -7;
 }
 
+//================================================================================================================
+
+
 class ErrorHandler implements Exception {
   late Failure failure;
+
+  //================================================================================================================
 
   ErrorHandler.handle(dynamic error) {
     if (error is DioException) {
@@ -55,6 +65,8 @@ class ErrorHandler implements Exception {
       failure = DataSource.DEFAULT.getFailure();
     }
   }
+
+  //================================================================================================================
 
   Failure _handelError(DioException error) {
     switch (error.type) {
@@ -90,6 +102,8 @@ class ErrorHandler implements Exception {
     }
   }
 }
+
+//================================================================================================================
 
 extension DataSourceExtension on DataSource {
   Failure getFailure() {
@@ -128,6 +142,8 @@ extension DataSourceExtension on DataSource {
   }
 }
 
+//================================================================================================================
+
 class ResponseMessage {
   static const String SUCCESS = AppStrings.success; // success with data
   static const String NO_CONTENT =
@@ -153,7 +169,11 @@ class ResponseMessage {
   static const String DEFAULT = AppStrings.defaultError;
 }
 
+//================================================================================================================
+
 class ApiInternalStatus {
   static const int SUCCESS = 0;
   static const int FAILURE = 1;
 }
+
+//================================================================================================================

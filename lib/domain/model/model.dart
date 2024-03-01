@@ -1,3 +1,6 @@
+
+//================================================================================================================
+
 class SliderObject {
   String title;
   String subTitle;
@@ -5,6 +8,8 @@ class SliderObject {
 
   SliderObject(this.title, this.subTitle, this.image);
 }
+
+//================================================================================================================
 
 class Customer {
   String id;
@@ -14,6 +19,8 @@ class Customer {
   Customer(this.id, this.name, this.numOfNotifications);
 }
 
+//================================================================================================================
+
 class Contacts {
   String email;
   String phone;
@@ -22,12 +29,16 @@ class Contacts {
   Contacts(this.email, this.phone, this.link);
 }
 
+//================================================================================================================
+
 class Authentication {
   Customer? customer;
   Contacts? contacts;
 
   Authentication(this.customer, this.contacts);
 }
+
+//================================================================================================================
 
 class DeviceInfo {
   String name;
@@ -37,6 +48,8 @@ class DeviceInfo {
   DeviceInfo(this.name, this.identifier, this.version);
 }
 
+//================================================================================================================
+
 class Service {
   int id;
   String title;
@@ -44,6 +57,8 @@ class Service {
 
   Service(this.id, this.title, this.image);
 }
+
+//================================================================================================================
 
 class BannerAd {
   int id;
@@ -54,6 +69,9 @@ class BannerAd {
   BannerAd(this.id, this.title, this.image, this.link);
 }
 
+
+//================================================================================================================
+
 class Store {
   int id;
   String title;
@@ -61,6 +79,8 @@ class Store {
 
   Store(this.id, this.title, this.image);
 }
+
+//================================================================================================================
 
 class HomeData {
   List<Service> services;
@@ -70,11 +90,15 @@ class HomeData {
   HomeData(this.services, this.stores, this.banners);
 }
 
+//================================================================================================================
+
 class HomeObject {
   HomeData data;
 
   HomeObject(this.data);
 }
+
+//================================================================================================================
 
 class StoreDetails {
   int id;
@@ -87,3 +111,5 @@ class StoreDetails {
   StoreDetails(
       this.id, this.title, this.image, this.details, this.services, this.about);
 }
+
+//================================================================================================================

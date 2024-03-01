@@ -7,6 +7,8 @@ class LoginRequest {
   LoginRequest(this.email, this.password, this.imei, this.deviceType);
 }
 
+//================================================================================================================
+
 class RegisterRequest {
   String countryMobileCode;
   String userName;
@@ -18,3 +20,5 @@ class RegisterRequest {
   RegisterRequest(this.countryMobileCode, this.userName, this.email,
       this.password, this.mobileNumber, this.profilePicture);
 }
+
+//================================================================================================================

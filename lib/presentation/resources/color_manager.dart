@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 
+//================================================================================================================
+
 // we can use hexColor package instead of this
 class ColorManager {
   static Color primary = HexColor.fromHex("#ED9728");
@@ -9,6 +11,8 @@ class ColorManager {
   static Color primaryOpacity70 =
       HexColor.fromHex("#B3ED9728"); // length > 6 that mean opacity , B3 = 70
 
+  //================================================================================================================
+
   // new colors
   static Color darkPrimary = HexColor.fromHex("#d17d11");
   static Color grey1 = HexColor.fromHex("#707070");
@@ -17,6 +21,8 @@ class ColorManager {
   static Color error = HexColor.fromHex("#e61f34"); // red color
   static Color black = HexColor.fromHex("#000000");
 }
+
+//================================================================================================================
 
 // An extension allows you to add new functionality to an existing class without modifying the class itself.
 // every static method in HexColor return Color
@@ -34,3 +40,5 @@ extension HexColor on Color {
             16)); // convert the hex color string to int and radix: 16 here mean that the hex color is hex decimal
   }
 }
+
+//================================================================================================================

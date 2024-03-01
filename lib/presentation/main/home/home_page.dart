@@ -10,6 +10,9 @@ import 'package:mvvm/presentation/resources/routes_manager.dart';
 import 'package:mvvm/presentation/resources/strings_manager.dart';
 import 'package:mvvm/presentation/resources/values_manager.dart';
 
+
+//================================================================================================================
+
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
 
@@ -17,8 +20,12 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
+//================================================================================================================
+
 class _HomePageState extends State<HomePage> {
   final HomeViewModel _homeViewModel = instance<HomeViewModel>();
+
+  //================================================================================================================
 
   @override
   void initState() {
@@ -26,9 +33,13 @@ class _HomePageState extends State<HomePage> {
     super.initState();
   }
 
+  //================================================================================================================
+
   _bind() {
     _homeViewModel.start();
   }
+
+  //================================================================================================================
 
   @override
   Widget build(BuildContext context) {
@@ -47,6 +58,8 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
+  //================================================================================================================
+
   Widget _getContentWidget() {
     return StreamBuilder<HomeViewObject>(
         stream: _homeViewModel.outputHomeData,
@@ -63,6 +76,8 @@ class _HomePageState extends State<HomePage> {
           );
         });
   }
+
+  //================================================================================================================
 
   Widget _getBannerWidget(List<BannerAd>? banners) {
     if (banners != null) {
@@ -93,6 +108,8 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  //================================================================================================================
+
   Widget _getSection(String title) {
     return Padding(
       padding: const EdgeInsets.only(
@@ -106,6 +123,8 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
+
+  //================================================================================================================
 
   Widget _getServicesWidget(List<Service>? services) {
     if (services != null) {
@@ -158,6 +177,8 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  //================================================================================================================
+
   Widget _getStoresWidget(List<Store>? stores) {
     if (stores != null) {
       return Padding(
@@ -196,9 +217,14 @@ class _HomePageState extends State<HomePage> {
     }
   }
 
+  //================================================================================================================
+
   @override
   void dispose() {
     _homeViewModel.dispose();
     super.dispose();
   }
+
+  //================================================================================================================
+  
 }

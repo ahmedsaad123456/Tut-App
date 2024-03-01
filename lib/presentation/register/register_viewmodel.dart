@@ -9,6 +9,9 @@ import 'package:mvvm/presentation/common/state_renderer/state_render.dart';
 import 'package:mvvm/presentation/common/state_renderer/state_render_impl.dart';
 import 'package:mvvm/presentation/resources/strings_manager.dart';
 
+
+//================================================================================================================
+
 class RegisterViewModel extends BaseViewModel
     with RegisterViewModelInputs, RegisterViewModelOutputs {
   final StreamController _userNameStreamController =
@@ -36,11 +39,15 @@ class RegisterViewModel extends BaseViewModel
   var registerObject = RegisterObject("", "", "", "", "", "");
   RegisterViewModel(this._registerUseCase);
 
+  //================================================================================================================
+
   @override
   void start() {
     // view tells state renderer, please show the content of the screen
     inputState.add(ContentState());
   }
+
+  //================================================================================================================
 
   @override
   void dispose() {
@@ -53,6 +60,8 @@ class RegisterViewModel extends BaseViewModel
     isUserSignUpSuccessfully.close();
     super.dispose();
   }
+
+  //================================================================================================================
 
   @override
   register() async {
@@ -76,6 +85,8 @@ class RegisterViewModel extends BaseViewModel
     );
   }
 
+  //================================================================================================================
+
   // inputs
 
   @override
@@ -96,6 +107,8 @@ class RegisterViewModel extends BaseViewModel
   @override
   Sink get inputProfilePicture => _ProfileStreamController.sink;
 
+
+  //================================================================================================================
   // outputs
   @override
   Stream<bool> get outputIsAllInputsValid =>
@@ -139,6 +152,9 @@ class RegisterViewModel extends BaseViewModel
   Stream<String?> get outputErrorUserName => outputIsUserNameValid.map(
       (isUserNameValid) => isUserNameValid ? null : AppStrings.userNameInvalid.tr());
 
+
+  //================================================================================================================
+
   @override
   setUserName(String userName) {
     inputUserName.add(userName);
@@ -152,6 +168,8 @@ class RegisterViewModel extends BaseViewModel
     _validate();
   }
 
+  //================================================================================================================
+
   @override
   setCountryCode(String countryCode) {
     if (countryCode.isNotEmpty) {
@@ -163,6 +181,8 @@ class RegisterViewModel extends BaseViewModel
     }
     _validate();
   }
+
+  //================================================================================================================
 
   @override
   setEmail(String email) {
@@ -177,6 +197,8 @@ class RegisterViewModel extends BaseViewModel
     _validate();
   }
 
+  //================================================================================================================
+
   @override
   setMobileNumber(String mobileNumber) {
     inputMobileNumber.add(mobileNumber);
@@ -189,6 +211,8 @@ class RegisterViewModel extends BaseViewModel
     }
     _validate();
   }
+
+  //================================================================================================================
 
   @override
   setPassword(String password) {
@@ -203,6 +227,8 @@ class RegisterViewModel extends BaseViewModel
     _validate();
   }
 
+  //================================================================================================================
+
   @override
   setProfilePicture(File profilePicture) {
     inputProfilePicture.add(profilePicture);
@@ -216,6 +242,8 @@ class RegisterViewModel extends BaseViewModel
     }
     _validate();
   }
+
+  //================================================================================================================
 
   // private functions
 
@@ -251,6 +279,8 @@ class RegisterViewModel extends BaseViewModel
   }
 }
 
+//================================================================================================================
+
 mixin RegisterViewModelInputs {
   // seven functions
 
@@ -272,6 +302,9 @@ mixin RegisterViewModelInputs {
   Sink get inputIsAllInputsValid;
 }
 
+
+//================================================================================================================
+
 mixin RegisterViewModelOutputs {
   // ten outputs
   Stream<bool> get outputIsUserNameValid;
@@ -291,3 +324,5 @@ mixin RegisterViewModelOutputs {
   // for the button
   Stream<bool> get outputIsAllInputsValid;
 }
+
+//================================================================================================================

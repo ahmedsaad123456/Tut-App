@@ -23,6 +23,8 @@ class RegisterView extends StatefulWidget {
   State<RegisterView> createState() => _RegisterViewState();
 }
 
+//================================================================================================================
+
 class _RegisterViewState extends State<RegisterView> {
   final RegisterViewModel _viewModel = instance<RegisterViewModel>();
   final AppPreferences _appPreferences = instance<AppPreferences>();
@@ -35,6 +37,8 @@ class _RegisterViewState extends State<RegisterView> {
   final TextEditingController _mobileNumberController = TextEditingController();
 
   final _formKey = GlobalKey<FormState>();
+
+  //================================================================================================================
 
   _bind() {
     _viewModel.start();
@@ -60,17 +64,23 @@ class _RegisterViewState extends State<RegisterView> {
     });
   }
 
+  //================================================================================================================
+
   @override
   void initState() {
     _bind();
     super.initState();
   }
 
+  //================================================================================================================
+
   @override
   void dispose() {
     _viewModel.dispose();
     super.dispose();
   }
+
+  //================================================================================================================
 
   @override
   Widget build(BuildContext context) {
@@ -93,6 +103,8 @@ class _RegisterViewState extends State<RegisterView> {
       ),
     );
   }
+
+  //================================================================================================================
 
   Widget _getContentWidget() {
     return Container(
@@ -267,6 +279,8 @@ class _RegisterViewState extends State<RegisterView> {
         ));
   }
 
+  //================================================================================================================
+
   _showPicker(BuildContext context) {
     showModalBottomSheet(
         context: context,
@@ -297,15 +311,21 @@ class _RegisterViewState extends State<RegisterView> {
         });
   }
 
+  //================================================================================================================
+
   _imageFromGallery() async {
     var image = await picker.pickImage(source: ImageSource.gallery);
     _viewModel.setProfilePicture(File(image?.path ?? ""));
   }
 
+  //================================================================================================================
+
   _imageFromCamera() async {
     var image = await picker.pickImage(source: ImageSource.camera);
     _viewModel.setProfilePicture(File(image?.path ?? ""));
   }
+
+  //================================================================================================================
 
   Widget _getMediaWidget() {
     return Padding(
@@ -327,6 +347,8 @@ class _RegisterViewState extends State<RegisterView> {
     );
   }
 
+  //================================================================================================================
+
   Widget _imagePicketByUser(File? image) {
     if (image != null && image.path.isNotEmpty) {
       // return image
@@ -335,4 +357,8 @@ class _RegisterViewState extends State<RegisterView> {
       return Container();
     }
   }
+
+  //================================================================================================================
 }
+
+//================================================================================================================

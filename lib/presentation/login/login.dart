@@ -11,12 +11,17 @@ import 'package:mvvm/presentation/resources/routes_manager.dart';
 import 'package:mvvm/presentation/resources/strings_manager.dart';
 import 'package:mvvm/presentation/resources/values_manager.dart';
 
+
+//================================================================================================================
+
 class LoginView extends StatefulWidget {
   const LoginView({super.key});
 
   @override
   State<LoginView> createState() => _LoginViewState();
 }
+
+//================================================================================================================
 
 class _LoginViewState extends State<LoginView> {
   final LoginViewModel _viewModel = instance<LoginViewModel>();
@@ -25,6 +30,8 @@ class _LoginViewState extends State<LoginView> {
   final TextEditingController _userNameController = TextEditingController();
   final TextEditingController _passwordController = TextEditingController();
   final _formKey = GlobalKey<FormState>();
+
+  //================================================================================================================
 
   __bind() {
     _viewModel.start();
@@ -49,11 +56,15 @@ class _LoginViewState extends State<LoginView> {
     });
   }
 
+  //================================================================================================================
+
   @override
   void initState() {
     __bind();
     super.initState();
   }
+
+  //================================================================================================================
 
   @override
   Widget build(BuildContext context) {
@@ -71,6 +82,8 @@ class _LoginViewState extends State<LoginView> {
       ),
     );
   }
+
+  //================================================================================================================
 
   Widget _getContentWidget() {
     return Container(
@@ -193,9 +206,13 @@ class _LoginViewState extends State<LoginView> {
     );
   }
 
+  //================================================================================================================
+
   @override
   void dispose() {
     _viewModel.dispose();
     super.dispose();
   }
+
+  //================================================================================================================
 }

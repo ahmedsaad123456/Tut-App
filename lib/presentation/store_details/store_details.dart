@@ -8,14 +8,22 @@ import 'package:mvvm/presentation/resources/strings_manager.dart';
 import 'package:mvvm/presentation/resources/values_manager.dart';
 import 'package:mvvm/presentation/store_details/store_details_viewmodel.dart';
 
+
+//================================================================================================================
+
 class StoreDetailsView extends StatefulWidget {
   const StoreDetailsView({super.key});
 
   @override
   State<StoreDetailsView> createState() => _StoreDetailsViewState();
 }
+
+//================================================================================================================
+
 class _StoreDetailsViewState extends State<StoreDetailsView> {
   final StoreDetailsViewModel _viewModel = instance<StoreDetailsViewModel>();
+
+  //================================================================================================================
 
   @override
   void initState() {
@@ -23,9 +31,13 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
     super.initState();
   }
 
+  //================================================================================================================
+
   bind() {
     _viewModel.start();
   }
+
+  //================================================================================================================
 
   @override
   Widget build(BuildContext context) {
@@ -43,6 +55,8 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
       },
     ));
   }
+
+  //================================================================================================================
 
   Widget _getContentWidget() {
     return Scaffold(
@@ -71,6 +85,8 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
         ));
   }
 
+  //================================================================================================================
+
   Widget _getItems(StoreDetails? storeDetails) {
     if (storeDetails != null) {
       return Column(
@@ -96,6 +112,8 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
     }
   }
 
+  //================================================================================================================
+
   Widget _getSection(String title) {
     return Padding(
         padding: const EdgeInsets.only(
@@ -106,6 +124,8 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
         child: Text(title, style: Theme.of(context).textTheme.displaySmall) );
   }
 
+  //================================================================================================================
+
   Widget _getInfoText(String info) {
     return Padding(
       padding: const EdgeInsets.all(AppSize.s12),
@@ -113,9 +133,13 @@ class _StoreDetailsViewState extends State<StoreDetailsView> {
     );
   }
 
+  //================================================================================================================
+
   @override
   void dispose() {
     _viewModel.dispose();
     super.dispose();
   }
+
+  //================================================================================================================
 }

@@ -1,6 +1,9 @@
 import 'package:json_annotation/json_annotation.dart';
 part 'responses.g.dart';
 
+//================================================================================================================
+
+
 @JsonSerializable()
 class BaseResponse {
   @JsonKey(name: "status")
@@ -8,6 +11,8 @@ class BaseResponse {
   @JsonKey(name: "message")
   String? message;
 }
+
+//================================================================================================================
 
 @JsonSerializable()
 class CustomerResponse {
@@ -27,6 +32,10 @@ class CustomerResponse {
   Map<String, dynamic> toJson() => _$CustomerResponseToJson(this);
 }
 
+
+//================================================================================================================
+
+
 @JsonSerializable()
 class ContactsResponse {
   @JsonKey(name: "email")
@@ -45,6 +54,9 @@ class ContactsResponse {
   Map<String, dynamic> toJson() => _$ContactsResponseToJson(this);
 }
 
+//================================================================================================================
+
+
 @JsonSerializable()
 class AuthenticationResponse extends BaseResponse {
   @JsonKey(name: "customer")
@@ -61,6 +73,9 @@ class AuthenticationResponse extends BaseResponse {
   Map<String, dynamic> toJson() => _$AuthenticationResponseToJson(this);
 }
 
+//================================================================================================================
+
+
 @JsonSerializable()
 class ForgotPasswordResponse extends BaseResponse {
   @JsonKey(name: "support")
@@ -75,6 +90,8 @@ class ForgotPasswordResponse extends BaseResponse {
   // to json
   Map<String, dynamic> toJson() => _$ForgotPasswordResponseToJson(this);
 }
+
+//================================================================================================================
 
 @JsonSerializable()
 class ServiceResponse {
@@ -95,6 +112,8 @@ class ServiceResponse {
   Map<String, dynamic> toJson() => _$ServiceResponseToJson(this);
 }
 
+//================================================================================================================
+
 @JsonSerializable()
 class StoresResponse {
   @JsonKey(name: "id")
@@ -113,6 +132,8 @@ class StoresResponse {
   // to json
   Map<String, dynamic> toJson() => _$StoresResponseToJson(this);
 }
+
+//================================================================================================================
 
 @JsonSerializable()
 class BannersResponse {
@@ -135,6 +156,8 @@ class BannersResponse {
   Map<String, dynamic> toJson() => _$BannersResponseToJson(this);
 }
 
+//================================================================================================================
+
 @JsonSerializable()
 class HomeDataResponse {
   @JsonKey(name: "services")
@@ -154,6 +177,8 @@ class HomeDataResponse {
   Map<String, dynamic> toJson() => _$HomeDataResponseToJson(this);
 }
 
+//================================================================================================================
+
 @JsonSerializable()
 class HomeResponse extends BaseResponse {
   @JsonKey(name: "data")
@@ -168,6 +193,9 @@ class HomeResponse extends BaseResponse {
   // to json
   Map<String, dynamic> toJson() => _$HomeResponseToJson(this);
 }
+
+
+//================================================================================================================
 
 @JsonSerializable()
 class StoreDetailsResponse extends BaseResponse {
@@ -192,3 +220,5 @@ class StoreDetailsResponse extends BaseResponse {
 
   Map<String, dynamic> toJson() => _$StoreDetailsResponseToJson(this);
 }
+
+//================================================================================================================

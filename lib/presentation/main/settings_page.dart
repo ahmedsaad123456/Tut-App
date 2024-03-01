@@ -13,6 +13,9 @@ import 'package:mvvm/presentation/resources/routes_manager.dart';
 import 'package:mvvm/presentation/resources/strings_manager.dart';
 import 'package:mvvm/presentation/resources/values_manager.dart';
 
+
+//================================================================================================================
+
 class SettingsPage extends StatefulWidget {
   const SettingsPage({super.key});
 
@@ -20,10 +23,14 @@ class SettingsPage extends StatefulWidget {
   _SettingsPageState createState() => _SettingsPageState();
 }
 
+//================================================================================================================
+
 class _SettingsPageState extends State<SettingsPage> {
   final AppPreferences _appPreferences = instance<AppPreferences>();
   final LocalDataSource _localDataSource = instance<LocalDataSource>();
 
+
+  //================================================================================================================
   @override
   Widget build(BuildContext context) {
     return Center(
@@ -87,22 +94,30 @@ class _SettingsPageState extends State<SettingsPage> {
     );
   }
 
+  //================================================================================================================
+
   bool isRtl() {
     return context.locale == ARABIC_LOCALE; // app is in arabic language
   }
+
+  //================================================================================================================
 
   _changeLanguage() {
     _appPreferences.setAppLanguage();
     Phoenix.rebirth(context); // restart the apply language changes
   }
 
+  //================================================================================================================
+
   _contactUs() {
-    // its a task for you to open any webpage using URL
   }
 
+  //================================================================================================================
+
   _inviteFriends() {
-    // its a task for you to share app name to friends
   }
+
+  //================================================================================================================
 
   _logout() {
     // app prefs make that user logged out
@@ -114,4 +129,6 @@ class _SettingsPageState extends State<SettingsPage> {
     // navigate to login screen
     Navigator.pushReplacementNamed(context, Routes.loginRoute);
   }
+
+  //================================================================================================================
 }

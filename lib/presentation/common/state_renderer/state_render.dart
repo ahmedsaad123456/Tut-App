@@ -8,6 +8,9 @@ import 'package:mvvm/presentation/resources/strings_manager.dart';
 import 'package:mvvm/presentation/resources/styles_manager.dart';
 import 'package:mvvm/presentation/resources/values_manager.dart';
 
+//================================================================================================================
+
+
 enum StateRendererType {
   // POPUP STATES (DIALOG)
   popupLoadingState,
@@ -21,11 +24,16 @@ enum StateRendererType {
   contentState
 }
 
+//================================================================================================================
+
 class StateRenderer extends StatelessWidget {
   final StateRendererType stateRendererType;
   final String message;
   final String title;
   final Function retryActionFunction;
+
+
+  //================================================================================================================
 
   const StateRenderer(
       {super.key, required this.stateRendererType,
@@ -33,10 +41,15 @@ class StateRenderer extends StatelessWidget {
       this.title = "",
       required this.retryActionFunction});
 
+  //================================================================================================================
+
+
   @override
   Widget build(BuildContext context) {
     return _getStateWidget(context);
   }
+
+  //================================================================================================================
 
   Widget _getStateWidget(BuildContext context) {
     switch (stateRendererType) {
@@ -75,6 +88,8 @@ class StateRenderer extends StatelessWidget {
     }
   }
 
+  //================================================================================================================
+
   Widget _getPopUpDialog(BuildContext context, List<Widget> children) {
     return Dialog(
       shape: RoundedRectangleBorder(
@@ -92,6 +107,10 @@ class StateRenderer extends StatelessWidget {
     );
   }
 
+
+  //================================================================================================================
+
+
   Widget _getDialogContent(BuildContext context, List<Widget> children) {
     return Column(
       mainAxisSize: MainAxisSize.min,
@@ -101,6 +120,9 @@ class StateRenderer extends StatelessWidget {
     );
   }
 
+  //================================================================================================================
+
+
   Widget _getItemsColumn(List<Widget> children) {
     return Column(
       mainAxisAlignment: MainAxisAlignment.center,
@@ -109,12 +131,17 @@ class StateRenderer extends StatelessWidget {
     );
   }
 
+  //================================================================================================================
+
+
   Widget _getAnimatedImage(String animationName) {
     return SizedBox(
         height: AppSize.s100,
         width: AppSize.s100,
         child: Lottie.asset(animationName));
   }
+
+  //================================================================================================================
 
   Widget _getMessage(String message) {
     return Center(
@@ -129,6 +156,8 @@ class StateRenderer extends StatelessWidget {
       ),
     );
   }
+
+  //================================================================================================================
 
   Widget _getRetryButton(String buttonTitle, BuildContext context) {
     return Center(
@@ -151,4 +180,8 @@ class StateRenderer extends StatelessWidget {
       ),
     );
   }
+
+  //================================================================================================================
 }
+
+//================================================================================================================

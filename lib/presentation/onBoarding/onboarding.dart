@@ -12,6 +12,9 @@ import 'package:mvvm/presentation/resources/routes_manager.dart';
 import 'package:mvvm/presentation/resources/strings_manager.dart';
 import 'package:mvvm/presentation/resources/values_manager.dart';
 
+
+//================================================================================================================
+
 class OnBoardingView extends StatefulWidget {
   const OnBoardingView({super.key});
 
@@ -19,22 +22,30 @@ class OnBoardingView extends StatefulWidget {
   State<OnBoardingView> createState() => _OnBoardingViewState();
 }
 
+//================================================================================================================
+
 class _OnBoardingViewState extends State<OnBoardingView> {
   final PageController _pageController = PageController(initialPage: 0);
 
   final OnBoardingViewModel _viewModel = OnBoardingViewModel();
   final AppPreferences _appPreferences = instance<AppPreferences>();
 
+  //================================================================================================================
+
   _bind() {
     _appPreferences.setOnBoardingScreenViewed();
     _viewModel.start();
   }
+
+  //================================================================================================================
 
   @override
   void initState() {
     _bind();
     super.initState();
   }
+
+  //================================================================================================================
 
   @override
   Widget build(BuildContext context) {
@@ -45,6 +56,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       },
     );
   }
+
+  //================================================================================================================
 
   Widget _getContentWidget(SliderViewObject? sliderViewObject) {
     if (sliderViewObject == null) {
@@ -97,6 +110,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
       );
     }
   }
+
+  //================================================================================================================
 
   Widget _getBottomSheetWidget(SliderViewObject sliderViewObject) {
     return Container(
@@ -157,6 +172,8 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     );
   }
 
+  //================================================================================================================
+
   Widget _getProperCircle(int index, int currentIndex) {
     if (index == currentIndex) {
       return SvgPicture.asset(ImageAssets.hollowCircleIc); // selected slider
@@ -165,12 +182,17 @@ class _OnBoardingViewState extends State<OnBoardingView> {
     }
   }
 
+
+  //================================================================================================================
+
   @override
   void dispose() {
     _viewModel.dispose();
     super.dispose();
   }
 }
+
+//================================================================================================================
 
 class OnBoardingPage extends StatelessWidget {
   final SliderObject _sliderObject;
@@ -208,3 +230,5 @@ class OnBoardingPage extends StatelessWidget {
     );
   }
 }
+
+//================================================================================================================

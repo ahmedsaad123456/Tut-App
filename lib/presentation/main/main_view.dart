@@ -8,6 +8,9 @@ import 'package:mvvm/presentation/resources/color_manager.dart';
 import 'package:mvvm/presentation/resources/strings_manager.dart';
 import 'package:mvvm/presentation/resources/values_manager.dart';
 
+
+//================================================================================================================
+
 class MainView extends StatefulWidget {
   const MainView({super.key});
 
@@ -15,7 +18,11 @@ class MainView extends StatefulWidget {
   State<MainView> createState() => _MainViewState();
 }
 
+//================================================================================================================
+
 class _MainViewState extends State<MainView> {
+
+  //================================================================================================================
   List<Widget> pages = [
     const HomePage(),
     const SearchPage(),
@@ -23,12 +30,16 @@ class _MainViewState extends State<MainView> {
     const SettingsPage()
   ];
 
+  //================================================================================================================
+
   List<String> titles = [
     AppStrings.home.tr(),
     AppStrings.search.tr(),
     AppStrings.notification.tr(),
     AppStrings.settings.tr(),
   ];
+
+  //================================================================================================================
 
   var _currentIndex = 0;
   @override
@@ -66,9 +77,13 @@ class _MainViewState extends State<MainView> {
     );
   }
 
+  //================================================================================================================
+
   onTap(int index) {
     setState(() {
       _currentIndex = index;
     });
   }
+
+  //================================================================================================================
 }

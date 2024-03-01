@@ -6,6 +6,9 @@ import 'package:mvvm/presentation/common/freezed_data_classes.dart';
 import 'package:mvvm/presentation/common/state_renderer/state_render.dart';
 import 'package:mvvm/presentation/common/state_renderer/state_render_impl.dart';
 
+
+//================================================================================================================
+
 class LoginViewModel extends BaseViewModel
     with LoginViewModelInputs, LoginViewModelOutputs {
   // broadcast stream for multiple listeners
@@ -24,6 +27,8 @@ class LoginViewModel extends BaseViewModel
   final LoginUseCase _loginUseCase;
   LoginViewModel(this._loginUseCase);
 
+  //================================================================================================================
+
   
 
   // inputs
@@ -33,6 +38,8 @@ class LoginViewModel extends BaseViewModel
     inputState.add(ContentState());
   }
 
+  //================================================================================================================
+
   @override
   void dispose() {
     _userNameStreamController.close();
@@ -40,6 +47,8 @@ class LoginViewModel extends BaseViewModel
     _passwordStreamController.close();
     isUserLoggedInSuccessfully.close();
   }
+
+  //================================================================================================================
 
   @override
   Sink get inputPassword => _passwordStreamController.sink;
@@ -50,6 +59,8 @@ class LoginViewModel extends BaseViewModel
   @override
   Sink get inputIsAllInputsValid => _isAllInputsValidStreamController.sink;
 
+
+  //================================================================================================================
   @override
   login() async {
     inputState.add(
@@ -70,6 +81,8 @@ class LoginViewModel extends BaseViewModel
                 });
   }
 
+  //================================================================================================================
+
   @override
   setPassword(String password) {
     inputPassword.add(password);
@@ -80,12 +93,16 @@ class LoginViewModel extends BaseViewModel
     _validate();
   }
 
+  //================================================================================================================
+
   @override
   setUserName(String userName) {
     inputUserName.add(userName);
     loginObject = loginObject.copyWith(userName: userName);
     _validate();
   }
+
+  //================================================================================================================
 
   // outputs
   @override
@@ -100,6 +117,8 @@ class LoginViewModel extends BaseViewModel
   Stream<bool> get outputIsAllInputsValid =>
       _isAllInputsValidStreamController.stream.map((_) => _isAllInputsValid());
 
+
+  //================================================================================================================
   // private functions
 
   _validate() {
@@ -118,8 +137,12 @@ class LoginViewModel extends BaseViewModel
     return _isUserNameValid(loginObject.userName) &&
         _isPasswordValid(loginObject.password);
   }
+
+  //================================================================================================================
 }
 
+
+//================================================================================================================
 mixin LoginViewModelInputs {
   // three functions
 
@@ -133,6 +156,7 @@ mixin LoginViewModelInputs {
   Sink get inputIsAllInputsValid;
 }
 
+//================================================================================================================
 mixin LoginViewModelOutputs {
   // three stream
   Stream<bool> get outputIsUserNameValid;
@@ -141,3 +165,4 @@ mixin LoginViewModelOutputs {
 
   Stream<bool> get outputIsAllInputsValid;
 }
+//================================================================================================================

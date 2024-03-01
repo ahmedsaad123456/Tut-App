@@ -29,35 +29,52 @@ Future<void> initAppModule() async {
   // shared_preferences instance
   instance.registerLazySingleton<SharedPreferences>(() => sharedPrefs);
 
+  //================================================================================================================
+
+
   // app prefs instance
   // Get it will search automatically for the object
   // inside AppPreferences in the instance of GetIt.instance
   instance
       .registerLazySingleton<AppPreferences>(() => AppPreferences(instance()));
 
+  //================================================================================================================
+
   // network info instance
   instance.registerLazySingleton<NetworkInfo>(
       () => NetworkInfoImpl(InternetConnectionChecker()));
+
+  //================================================================================================================
 
   // dio factory instance
 
   instance.registerLazySingleton<DioFactory>(() => DioFactory(instance()));
 
+  //================================================================================================================
+
   // app services client instance
   final dio = await instance<DioFactory>().getDio();
   instance.registerLazySingleton<AppServiceClient>(() => AppServiceClient(dio));
+
+  //================================================================================================================
 
   // remote data source instance
   instance.registerLazySingleton<RemoteDataSource>(
       () => RemoteDataSourceImplementer(instance()));
 
+  //================================================================================================================
+
   // local data source instance
   instance.registerLazySingleton<LocalDataSource>(() => LocalDataSourceImpl());
+
+  //================================================================================================================
 
   // repository instance
   instance.registerLazySingleton<Repository>(
       () => RepositoryImpl(instance(), instance(), instance()));
 }
+
+//================================================================================================================
 
 initLoginModule() {
   // register factory get new instance every time
@@ -68,6 +85,10 @@ initLoginModule() {
   }
 }
 
+
+//================================================================================================================
+
+
 initForgotPasswordModule() {
   if (!GetIt.I.isRegistered<ForgotPasswordUseCase>()) {
     instance.registerFactory<ForgotPasswordUseCase>(
@@ -76,6 +97,8 @@ initForgotPasswordModule() {
         () => ForgotPasswordViewModel(instance()));
   }
 }
+
+//================================================================================================================
 
 initRegisterModule() {
   if (!GetIt.I.isRegistered<RegisterUseCase>()) {
@@ -87,12 +110,17 @@ initRegisterModule() {
   }
 }
 
+//================================================================================================================
+
+
 initHomeModule() {
   if (!GetIt.I.isRegistered<HomeUseCase>()) {
     instance.registerFactory<HomeUseCase>(() => HomeUseCase(instance()));
     instance.registerFactory<HomeViewModel>(() => HomeViewModel(instance()));
   }
 }
+
+//================================================================================================================
 
 
 initStoreDetailsModule() {
@@ -103,3 +131,5 @@ initStoreDetailsModule() {
         () => StoreDetailsViewModel(instance()));
   }
 }
+
+//================================================================================================================

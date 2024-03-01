@@ -9,13 +9,19 @@ import 'package:mvvm/data/requests/request.dart';
 import 'package:mvvm/domain/model/model.dart';
 import 'package:mvvm/domain/repository/repository.dart';
 
+//================================================================================================================
+
 class RepositoryImpl extends Repository {
   final RemoteDataSource _remoteDataSource;
   final LocalDataSource _localDataSource;
   final NetworkInfo _networkInfo;
 
+  //================================================================================================================
+
   RepositoryImpl(
       this._remoteDataSource, this._localDataSource, this._networkInfo);
+
+  //================================================================================================================
 
   @override
   Future<Either<Failure, Authentication>> login(
@@ -45,6 +51,8 @@ class RepositoryImpl extends Repository {
     }
   }
 
+  //================================================================================================================
+
   @override
   Future<Either<Failure, String>> forgotPassword(String email) async {
     if (await _networkInfo.isConnected) {
@@ -71,6 +79,8 @@ class RepositoryImpl extends Repository {
       return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
     }
   }
+
+  //================================================================================================================
 
   @override
   Future<Either<Failure, Authentication>> register(
@@ -99,6 +109,8 @@ class RepositoryImpl extends Repository {
       return Left(DataSource.NO_INTERNET_CONNECTION.getFailure());
     }
   }
+
+  //================================================================================================================
 
   @override
   Future<Either<Failure, HomeObject>> getHome() async {
@@ -136,6 +148,8 @@ class RepositoryImpl extends Repository {
       }
     }
   }
+
+  //================================================================================================================
   
   @override
   Future<Either<Failure, StoreDetails>> getStoreDetails() async {
@@ -164,3 +178,5 @@ class RepositoryImpl extends Repository {
     }
   }
 }
+
+//================================================================================================================
